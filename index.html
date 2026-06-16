@@ -38,19 +38,20 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 
 /* --- Hero --- */
 .hero{padding:32px 16px 40px;text-align:center;position:relative}
+.hero .mw{display:flex;flex-direction:column;align-items:center}
 .hero-logo{
   display:inline-flex;align-items:center;
   background:rgba(20,20,23,.64);border-radius:999px;
   padding:8px 12px;margin-bottom:40px;
 }
 .hero-logo svg{height:17px;width:auto}
-.hero-mascot{width:100%;max-width:361px;margin:0 auto 16px}
-.hero h1{font-family:Geom,sans-serif;font-weight:800;font-size:32px;line-height:40px;margin-bottom:8px}
-.hero-sub{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;margin-bottom:16px}
-.hero-body{font-size:16px;line-height:24px;color:var(--gray);margin-bottom:40px}
+.hero-mascot{width:100%;max-width:361px;margin-bottom:16px}
+.hero h1{font-family:Geom,sans-serif;font-weight:800;font-size:32px;line-height:40px;margin-bottom:8px;width:100%}
+.hero-sub{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;margin-bottom:16px;width:100%}
+.hero-body{font-size:16px;line-height:24px;color:var(--gray);margin-bottom:32px;width:100%}
 .btn-w{
   display:flex;align-items:center;justify-content:center;
-  width:100%;max-width:361px;margin:0 auto 16px;
+  width:100%;max-width:361px;margin-bottom:16px;
   padding:12px 16px;background:var(--white);color:var(--dark);
   font-weight:600;font-size:16px;line-height:24px;
   border-radius:12px;transition:transform .15s,box-shadow .15s;
@@ -214,7 +215,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
   --ease-out:cubic-bezier(0.23,1,0.32,1);
   --ease-in-out:cubic-bezier(0.77,0,0.175,1);
 }
-[data-a]{opacity:0;transform:translateY(16px);will-change:transform,opacity}
+[data-a]{opacity:0;transform:translateY(16px)}
 [data-a].in{opacity:1;transform:none;transition:opacity .5s var(--ease-out),transform .5s var(--ease-out)}
 /* Stagger */
 [data-d="1"].in{transition-delay:60ms}
@@ -222,9 +223,6 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 [data-d="3"].in{transition-delay:180ms}
 [data-d="4"].in{transition-delay:240ms}
 [data-d="5"].in{transition-delay:300ms}
-/* Heading variant: tighter, sharper */
-h1[data-a],h2[data-a],.hero-sub[data-a]{transform:translateY(24px)}
-h1[data-a].in,h2[data-a].in,.hero-sub[data-a].in{transition-duration:.55s;transition-timing-function:var(--ease-in-out)}
 /* Cards: horizontal slide */
 .sc[data-a],.pc[data-a]{transform:translateX(24px)}
 /* Step cards: scale */
