@@ -221,7 +221,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
   --ease-expo:cubic-bezier(0.16,1,0.3,1);
 }
 [data-a]{opacity:0;transform:translateY(16px)}
-[data-a].in{opacity:1;transform:none;transition:opacity .5s var(--ease-out),transform .5s var(--ease-out)}
+[data-a].in{opacity:1;transform:none;transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
 /* Stagger */
 [data-d="1"].in{transition-delay:60ms}
 [data-d="2"].in{transition-delay:120ms}
@@ -236,11 +236,11 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 
 /* Images: fade in + slide up (200ms) when in view */
 [data-img]{opacity:0;transform:translateY(20px)}
-[data-img].in{opacity:1;transform:none;transition:opacity .2s var(--ease-out),transform .2s var(--ease-out)}
+[data-img].in{opacity:1;transform:none;transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
 
 /* Titles: clip text-reveal (mask wipe up) */
 [data-title]{overflow:hidden;display:block}
-[data-title]>span{display:block;transform:translateY(110%);transition:transform .9s var(--ease-expo);padding-bottom:0.08em}
+[data-title]>span{display:block;transform:translateY(110%);transition:transform 1.3s var(--ease-expo);padding-bottom:0.08em}
 [data-title].in>span{transform:translateY(0)}
 
 /* Reduced motion */
