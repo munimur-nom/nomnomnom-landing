@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nomnomnom for Restaurants — Keep more of every order</title>
+<meta name="description" content="DoorDash takes up to 30%. We take 12%. No contracts, no setup fees, no monthly minimums. Professional photography included. Launching in Irvine, CA.">
+<meta property="og:title" content="DoorDash takes up to 30%. We take 12%. That's the pitch.">
+<meta property="og:description" content="nomnomnom charges 12% for delivery, 10% for your own drivers, 5% for pickup. No contracts. No setup fees. Launching in Irvine, CA.">
+<link rel="canonical" href="https://getnomnomnom.com/restaurants">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700;900&family=Geom:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#141417;--surface:#28282e;--surface-dark:#19191b;--accent:#E8652B;--brand:#FF7300;--red:#FF5151;--green:#33C759;--gray:#CACACA;--body1:#A9A9B0;--white:#FFF;--dark:#111}
+html{scroll-behavior:smooth}
+body{font-family:'Google Sans Flex','Google Sans',sans-serif;background:var(--bg);color:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+button{border:none;background:none;cursor:pointer;font-family:inherit}
+.r{color:var(--red)}.g{color:var(--green)}.gr{color:var(--gray)}.br{color:var(--brand)}
+.mw{max-width:393px;margin-inline:auto}
+
+.hero{padding:32px 16px 40px;text-align:center}
+.hero .mw{display:flex;flex-direction:column;align-items:center}
+.hero-logo{display:inline-flex;align-items:center;background:rgba(20,20,23,.64);border-radius:999px;padding:8px 12px;margin-bottom:40px}
+.hero-logo svg{height:17px;width:auto}
+.hero h1{font-family:Geom,sans-serif;font-weight:800;font-size:32px;line-height:40px;margin-bottom:16px;width:100%}
+.hero-body{font-size:16px;line-height:24px;color:var(--gray);margin-bottom:32px;width:100%}
+.btn-w{display:flex;align-items:center;justify-content:center;width:100%;max-width:361px;margin-bottom:16px;padding:12px 16px;background:var(--white);color:var(--dark);font-weight:600;font-size:16px;line-height:24px;border-radius:12px;transition:transform .15s,box-shadow .15s}
+.btn-w:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(255,255,255,.1)}
+.btn-d{display:flex;align-items:center;justify-content:center;width:100%;max-width:361px;margin:0 auto 16px;padding:12px 16px;background:var(--bg);color:var(--white);font-weight:600;font-size:16px;line-height:24px;border-radius:12px;transition:transform .15s}
+.hero-fine{font-size:12px;line-height:16px}
+
+.pain{padding:40px 16px}
+.pain h2{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;margin-bottom:24px}
+.pain-list{display:flex;flex-direction:column;gap:16px;padding-left:32px;border-left:1px solid var(--red);position:relative}
+.pain-item{position:relative;font-size:16px;line-height:24px}
+.pain-item::before{content:'';position:absolute;left:-38px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--red)}
+
+.trans-section{padding:40px 16px;text-align:center}
+.trans-section h3{font-family:Geom,sans-serif;font-weight:700;font-size:18px;line-height:24px;margin-bottom:8px}
+
+.compare{padding:40px 16px}
+.compare h2{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;text-align:center;margin-bottom:24px}
+.cmp-header{display:flex;justify-content:space-between;text-align:center;margin-bottom:24px;font-weight:600;font-size:14px}
+.cmp-header span{width:96px}
+.cmp-group{margin-bottom:40px}
+.cmp-group-title{font-weight:600;font-size:16px;line-height:24px;text-align:center;margin-bottom:24px}
+.cmp-label{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.cmp-label span{font-weight:600;font-size:10px;line-height:12px;color:var(--gray);text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
+.cmp-label::before,.cmp-label::after{content:'';flex:1;height:1px;background:var(--surface)}
+.cmp-vals{display:flex;justify-content:space-between;text-align:center;margin-bottom:16px}
+.cmp-vals p{width:96px;font-family:Geom,sans-serif;font-weight:700;font-size:18px;line-height:24px}
+.cmp-sub{display:flex;justify-content:space-between;text-align:center;margin-top:-12px;margin-bottom:16px}
+.cmp-sub p{width:96px;font-size:14px;line-height:20px}
+.savings-call{font-weight:600;font-size:16px;line-height:24px;text-align:center;margin:24px 0}
+
+.calc{padding:40px 16px}
+.calc h2{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;text-align:center;margin-bottom:24px}
+.calc-field{margin-bottom:24px;text-align:center}
+.calc-field label{display:block;font-weight:600;font-size:16px;line-height:24px;margin-bottom:8px}
+.calc-slider{width:100%;max-width:361px;height:6px;border-radius:999px;-webkit-appearance:none;appearance:none;background:var(--surface);outline:none}
+.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:40px;height:40px;border-radius:50%;background:var(--brand);cursor:pointer}
+.calc-pills{display:flex;gap:10px;max-width:361px;margin:0 auto}
+.calc-pill{flex:1;height:40px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--surface);border-radius:10px;font-weight:500;font-size:14px;color:#f5f5f5;cursor:pointer;transition:background .2s,border-color .2s}
+.calc-pill.active{background:var(--white);color:var(--dark);border-color:var(--white)}
+.calc-result{text-align:center;margin-top:24px}
+.calc-result h3{font-family:Geom,sans-serif;font-weight:700;font-size:18px;line-height:24px;margin-bottom:8px}
+.calc-divider{height:1px;background:var(--surface);max-width:361px;margin:16px auto}
+.calc-fine{font-size:12px;line-height:16px;color:var(--gray);margin-top:16px}
+
+.steps-section{padding:40px 16px}
+.steps-section h2{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;text-align:center;margin-bottom:40px}
+.steps{display:flex;flex-direction:column;gap:40px}
+.step{background:var(--surface);border-radius:12px;padding:12px 16px 16px;position:relative}
+.step-n{font-family:Geom,sans-serif;font-weight:800;font-size:32px;line-height:40px;color:rgba(232,102,43,.4);letter-spacing:2.56px}
+.step h3{font-family:Geom,sans-serif;font-weight:700;font-size:18px;line-height:24px;margin:8px 0}
+.step p{font-size:14px;line-height:20px}
+.step-deco{position:absolute;right:-8px;top:-24px;width:90px;pointer-events:none}
+
+.features{padding:40px 16px}
+.features h2{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;margin-bottom:24px}
+.feat-grid{display:flex;gap:12px}
+.feat-col{flex:1;display:flex;flex-direction:column;gap:12px}
+.feat-col:last-child{margin-top:40px}
+.feat-card{background:var(--surface);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.feat-icon{width:40px;height:40px;background:var(--surface-dark);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.feat-icon svg{width:24px;height:24px;stroke:var(--white);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.feat-card h4{font-weight:500;font-size:14px;line-height:20px}
+.feat-card p{font-size:14px;line-height:20px;color:var(--gray)}
+
+.launch{padding:40px 16px;text-align:center}
+.launch h2{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;margin-bottom:16px}
+.launch p{font-size:16px;line-height:24px;color:var(--gray)}
+
+.cta{background:var(--white);padding:24px 16px;text-align:center;position:relative;overflow:hidden}
+.cta h2{font-family:Geom,sans-serif;font-weight:700;font-size:18px;line-height:24px;color:var(--dark);margin-bottom:24px}
+.cta-fine{font-size:12px;line-height:16px;color:var(--dark);max-width:305px;margin:0 auto}
+
+.ft{border-top:1px solid var(--surface);padding:16px;display:flex;align-items:center;justify-content:space-between}
+.ft-logo img{height:64px;width:auto}
+.ft-r{text-align:right;display:flex;flex-direction:column;gap:5px;font-size:14px;line-height:20px}
+.ft-r .cp{color:var(--gray)}.ft-r .md{color:var(--white)}.ft-r .lg{color:var(--gray)}
+
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;align-items:center;justify-content:center;padding:16px}
+.mo.open{display:flex}
+.mo-box{background:var(--surface);border-radius:16px;padding:32px 24px;width:100%;max-width:400px;text-align:center;position:relative}
+.mo-box h3{font-family:Geom,sans-serif;font-weight:700;font-size:24px;line-height:32px;margin-bottom:8px}
+.mo-box .mo-sub{font-size:14px;line-height:20px;color:var(--gray);margin-bottom:24px}
+.mo-in{display:block;width:100%;padding:12px 16px;background:var(--bg);border:1px solid #3a3a40;border-radius:10px;color:var(--white);font-size:16px;margin-bottom:12px;outline:none;font-family:inherit;transition:border-color .2s}
+.mo-in:focus{border-color:var(--accent)}.mo-in::placeholder{color:#666}
+.mo-go{width:100%;padding:12px;background:var(--white);color:var(--dark);font-weight:600;font-size:16px;border-radius:10px;border:none;cursor:pointer;transition:background .2s;margin-top:12px}
+.mo-go:hover{background:#eee}.mo-go:disabled{opacity:.6;cursor:not-allowed}
+.mo-x{position:absolute;top:12px;right:16px;font-size:24px;color:var(--gray);cursor:pointer;background:none;border:none;line-height:1}
+.mo-ok{display:none}.mo-ok.show{display:block}.mo-form.hide{display:none}
+.mo-err{color:var(--red);font-size:13px;margin-bottom:8px;min-height:0}
+
+:root{--ease-out:cubic-bezier(0.23,1,0.32,1);--ease-expo:cubic-bezier(0.16,1,0.3,1)}
+[data-a]{opacity:0;transform:translateY(16px)}
+[data-a].in{opacity:1;transform:none;transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+[data-d="1"].in{transition-delay:60ms}[data-d="2"].in{transition-delay:120ms}[data-d="3"].in{transition-delay:180ms}
+[data-img]{opacity:0;transform:translateY(20px)}
+[data-img].in{opacity:1;transform:none;transition:opacity 1.5s var(--ease-out),transform 1.5s var(--ease-out)}
+[data-title]{overflow:hidden;display:block}
+[data-title]>span{display:block;transform:translateY(110%);transition:transform 1.3s var(--ease-expo);padding-bottom:.08em}
+[data-title].in>span{transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){[data-a],[data-img]{opacity:1!important;transform:none!important;transition:none!important}[data-title]>span{transform:none!important;transition:none!important}}
+
+@media(min-width:768px){.mw{max-width:600px}}
+@media(min-width:1024px){
+  .mw{max-width:1100px;padding-inline:40px}
+  .hero .mw{max-width:900px}
+  .hero-body{max-width:529px;margin-inline:auto}
+  .btn-w,.btn-d{max-width:361px}
+  .pain .mw{max-width:700px}
+  .compare .mw{max-width:800px}
+  .calc .mw{max-width:600px}
+  .steps{flex-direction:row;gap:24px}
+  .step{flex:1}
+  .feat-grid{gap:24px}
+  .launch .mw{max-width:600px}
+  .cta{padding:40px}
+  .cta h2{max-width:500px;margin-inline:auto;margin-bottom:24px}
+  .ft{padding:16px 128px}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+<div class="mw">
+  <a href="/" class="hero-logo"><svg width="210" height="17" viewBox="0 0 218 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M206.834 3.24c1.95 0 3.505.6 4.667 1.8 1.182 1.202 1.772 3.014 1.772 5.436v9.216h-6.675v-8.064c0-1.851-.601-2.777-1.802-2.777-.63 0-1.142.237-1.536.71-.374.472-.561 1.22-.561 2.245v7.886h-6.676v-8.064c0-1.851-.6-2.777-1.802-2.777-.63 0-1.142.237-1.536.71-.374.472-.561 1.22-.561 2.245v7.886h-6.676V3.535l6.351.615v.891c1.201-1.201 2.727-1.802 4.578-1.802 1.083 0 2.058.207 2.925.62.866.394 1.575 1.005 2.126 1.832.65-.788 1.438-1.388 2.363-1.802.926-.433 1.94-.65 3.043-.65Z" fill="#fff"/><path d="M156.855 3.24c1.989 0 3.584.6 4.786 1.8 1.22 1.202 1.831 3.014 1.831 5.436v9.216h-6.676v-8.064c0-1.851-.659-2.777-1.979-2.777-.748 0-1.359.266-1.831.8-.453.511-.68 1.329-.68 2.451v7.59h-6.675V3.535l6.35.615v.98c.63-.63 1.359-1.103 2.186-1.418a6.888 6.888 0 0 1 2.688-.473Z" fill="#fff"/><path d="M136.295 3.24c1.95 0 3.506.6 4.668 1.8 1.181 1.202 1.772 3.014 1.772 5.436v9.216h-6.676v-8.064c0-1.851-.6-2.777-1.802-2.777-.63 0-1.142.237-1.536.71-.374.472-.561 1.22-.561 2.245v7.886h-6.676v-8.064c0-1.851-.6-2.777-1.801-2.777-.631 0-1.143.237-1.536.71-.375.472-.562 1.22-.562 2.245v7.886h-6.676V3.535l6.35.615v.891c1.202-1.201 2.728-1.802 4.579-1.802 1.083 0 2.058.207 2.924.62.867.394 1.576 1.005 2.127 1.832.65-.788 1.438-1.388 2.363-1.802.926-.433 1.94-.65 3.043-.65Z" fill="#fff"/><path d="M86.932 3.24c1.99 0 3.585.6 4.786 1.8 1.22 1.202 1.831 3.014 1.831 5.436v9.216h-6.676v-8.064c0-1.851-.66-2.777-1.979-2.777-.749 0-1.359.266-1.831.8-.454.511-.68 1.329-.68 2.451v7.59h-6.676V3.535l6.351.615v.98c.63-.63 1.358-1.103 2.186-1.418a6.888 6.888 0 0 1 2.688-.473Z" fill="#fff"/><path d="M66.372 3.24c1.95 0 3.506.6 4.668 1.8 1.181 1.202 1.772 3.014 1.772 5.436v9.216h-6.676v-8.064c0-1.851-.6-2.777-1.802-2.777-.63 0-1.142.237-1.536.71-.374.472-.561 1.22-.561 2.245v7.886h-6.676v-8.064c0-1.851-.6-2.777-1.801-2.777-.631 0-1.143.237-1.536.71-.375.472-.562 1.22-.562 2.245v7.886H44.987V3.535l6.35.615v.891c1.202-1.201 2.728-1.802 4.579-1.802 1.083 0 2.058.207 2.924.62.867.394 1.576 1.005 2.127 1.832.65-.788 1.438-1.388 2.363-1.802.926-.433 1.94-.65 3.043-.65Z" fill="#fff"/><path d="M15.163 3.24c1.989 0 3.584.6 4.785 1.8 1.221 1.202 1.832 3.014 1.832 5.436v9.216H15.104v-8.064c0-1.851-.66-2.777-1.98-2.777-.748 0-1.358.266-1.831.8-.453.511-.68 1.329-.68 2.451v7.59H3.939V3.535l6.35.615v.98c.63-.63 1.359-1.103 2.186-1.418a6.888 6.888 0 0 1 2.688-.473Z" fill="#fff"/><path d="M33.504 3.24c1.812 0 3.426.354 4.844 1.063a20.1 20.1 0 0 0 .037.02c-.9.842-1.462 2.04-1.462 3.37 0 2.549 2.066 4.615 4.615 4.615.468 0 .919-.07 1.344-.2-.077 1.412-.475 2.689-1.196 3.833-.788 1.26-1.9 2.255-3.338 2.983-1.418.71-3.032 1.064-4.844 1.064-1.792 0-3.407-.354-4.845-1.064-1.417-.728-2.53-1.723-3.338-2.983-.807-1.28-1.211-2.727-1.211-4.342 0-1.614.404-3.052 1.211-4.312.808-1.28 1.92-2.275 3.338-2.984 1.438-.709 3.053-1.063 4.845-1.063Zm0 5.2c-.768 0-1.398.275-1.891.827-.492.551-.738 1.329-.738 2.333 0 1.004.246 1.792.738 2.363.493.551 1.123.827 1.89.827.769 0 1.4-.276 1.892-.827.491-.571.738-1.36.738-2.363 0-1.004-.247-1.782-.738-2.333-.493-.551-1.123-.827-1.891-.827Z" fill="#FF7300"/><path d="M104.778 3.24c1.812 0 3.426.354 4.844 1.063l.037.02c-.9.842-1.462 2.04-1.462 3.37 0 1.274.516 2.427 1.351 3.263-.078.336-.12.685-.12 1.045 0 2.063 1.354 3.81 3.221 4.4-.761 1.045-1.77 1.886-3.028 2.524-1.418.71-3.032 1.064-4.844 1.064-1.792 0-3.407-.355-4.845-1.064-1.417-.728-2.53-1.723-3.337-2.983-.808-1.28-1.211-2.727-1.211-4.342 0-1.614.404-3.052 1.21-4.312.808-1.28 1.921-2.275 3.338-2.984 1.438-.709 3.053-1.063 4.845-1.063Zm0 5.2c-.768 0-1.398.275-1.89.827-.493.551-.739 1.329-.739 2.333 0 1.004.246 1.792.739 2.363.492.551 1.122.827 1.89.827.768 0 1.399-.276 1.891-.827.492-.571.738-1.36.738-2.363 0-1.004-.246-1.782-.738-2.333-.492-.551-1.123-.827-1.891-.827Z" fill="#FF7300"/><ellipse cx="182.462" cy="19.692" rx=".923" ry=".615" fill="#FF7300"/><ellipse cx="180.923" cy="20" rx=".615" ry=".308" fill="#FF7300"/><path d="M175.62 3.241a7.685 7.685 0 0 0-1.576 4.451c0 .393.033.779.094 1.154a2.57 2.57 0 0 0-.481.42c-.493.55-.738 1.328-.738 2.333 0 1.004.246 1.791.738 2.362.492.551 1.122.827 1.89.827.769 0 1.399-.276 1.891-.827a2.58 2.58 0 0 0 .121-.154 5.538 5.538 0 0 0 3.561.961c.571.76 1.371 1.338 2.299 1.632-.761 1.044-1.77 1.886-3.028 2.523-1.418.709-3.032 1.064-4.844 1.064-1.792 0-3.407-.355-4.844-1.064-1.418-.729-2.531-1.723-3.338-2.984-.808-1.28-1.211-2.727-1.211-4.341 0-1.615.403-3.052 1.21-4.313.808-1.28 1.921-2.274 3.338-2.984 1.438-.709 3.053-1.063 4.845-1.063l.073.003Z" fill="#FF7300"/></svg></a>
+  <h1 data-title><span>DoorDash takes up to <span class="r">30%</span>. We take <span class="g">12%</span>. That&#x2019;s it. That&#x2019;s the pitch.</span></h1>
+  <p class="hero-body" data-a data-d="1">nomnomnom charges 12% for delivery, 10% for your own drivers, 5% for pickup. No contracts. No setup fees. No monthly minimums. No small print that requires a law degree.</p>
+  <button class="btn-w" data-a data-d="2" onclick="openM()">Get started &#x2014; it&#x2019;s free</button>
+  <p class="hero-fine" data-a data-d="3">No contract. No setup fee. Leave whenever you want. We&#x2019;ll be sad but we&#x2019;ll cope.</p>
+</div>
+</section>
+
+<section class="pain"><div class="mw">
+  <h2 data-title><span>Let&#x2019;s talk about the <span class="r">30%</span> in the room.</span></h2>
+  <div class="pain-list" data-a>
+    <div class="pain-item">You already know this, but let&#x2019;s say it out loud: <strong class="r">DoorDash and Uber Eats take 15-30% of every order</strong>. On a busy month, that&#x2019;s thousands of dollars walking out the door to a company in San Francisco that&#x2019;s never tasted your food.</div>
+    <div class="pain-item">But the commission is only part of it. They inflate your menu prices to cover their cut, so your $12 dish shows up as $14.40. Your customers think YOU raised your prices. Your brand takes the hit.</div>
+    <div class="pain-item">And if a customer finds you on these apps? That&#x2019;s their customer now. You don&#x2019;t get their email. You don&#x2019;t get their order history. You get a ticket on a tablet and a smaller check than you deserve.</div>
+  </div>
+</div></section>
+
+<section class="trans-section"><div class="mw">
+  <h3 data-a>We thought that was a bad deal.<br>So we built a <span class="g">better one</span>.</h3>
+</div></section>
+
+<section class="compare"><div class="mw">
+  <h2 data-title><span>The math, because you deserve to see it</span></h2>
+  <div class="cmp-header" data-a><span>DoorDash</span><span>Uber Eats</span><span style="color:var(--brand)">nomnomnom</span></div>
+  <div class="cmp-group" data-a>
+    <p class="cmp-group-title">Commissions/fees</p>
+    <div class="cmp-label"><span>Delivery</span></div><div class="cmp-vals"><p>15-30%</p><p>15-30%</p><p class="g">12%</p></div>
+    <div class="cmp-label"><span>Pickup</span></div><div class="cmp-vals"><p>6%</p><p>7-10%</p><p class="g">5%</p></div>
+    <div class="cmp-label"><span>Your-own driver</span></div><div class="cmp-vals"><p>15-30%</p><p>15-30%</p><p class="g">12%</p></div>
+    <div class="cmp-label"><span>Setup fees</span></div><div class="cmp-vals"><p>$0-500</p><p>Varies</p><p class="g">$0</p></div>
+  </div>
+  <div class="cmp-group" data-a>
+    <p class="cmp-group-title">Additional considerations</p>
+    <div class="cmp-label"><span>Contract required</span></div><div class="cmp-vals"><p>Often</p><p>Often</p><p class="g">Never</p></div>
+    <div class="cmp-label"><span>Menu price inflation</span></div><div class="cmp-vals"><p>Yes</p><p>Yes</p><p class="g">Never</p></div>
+    <div class="cmp-label"><span>Customer data shared</span></div><div class="cmp-vals"><p>No</p><p>No</p><p class="g">Yes</p></div>
+    <div class="cmp-label"><span>Toast integration fee</span></div><div class="cmp-vals"><p>$75/mo</p><p>$75/mo</p><p class="g">$0/mo</p></div>
+    <div class="cmp-sub"><p>(you pay)</p><p>(you pay)</p><p>(we pay)</p></div>
+  </div>
+  <p class="savings-call" data-a>On a $32 order at 10 orders/day, you&#x2019;d <strong class="g">save ~$15,000/year</strong> with nomnomnom compared to other food delivery apps. That&#x2019;s not a typo. We double-checked.</p>
+</div></section>
+
+<section class="calc"><div class="mw">
+  <h2 data-title><span>Plug in your numbers. Try not to get angry.</span></h2>
+  <div class="calc-field" data-a><label>Average order value: $<span id="aov-val">15</span></label><input type="range" class="calc-slider" id="aov" min="10" max="60" value="15" oninput="calcUpdate()"></div>
+  <div class="calc-field" data-a><label>Daily delivery orders: <span id="orders-val">15</span></label><input type="range" class="calc-slider" id="orders" min="5" max="50" value="15" oninput="calcUpdate()"></div>
+  <div class="calc-field" data-a><label>Current commission rate</label><div class="calc-pills"><button class="calc-pill active" data-rate="15" onclick="setRate(15)">15%</button><button class="calc-pill" data-rate="20" onclick="setRate(20)">20%</button><button class="calc-pill" data-rate="25" onclick="setRate(25)">25%</button><button class="calc-pill" data-rate="30" onclick="setRate(30)">30%</button></div></div>
+  <div class="calc-result" data-a><h3>You are currently paying<br><span class="r" id="current-cost">~$17,000/year in commissions</span>.</h3><div class="calc-divider"></div><h3>On nomnomnom,<br><span class="g" id="nom-cost">you&#x2019;d pay ~$9,855/year</span>.</h3></div>
+  <p class="calc-fine" data-a>This calculator is conservative. It doesn&#x2019;t include the $0 service fee savings your customers get &#x2014; which means they order more often. But we&#x2019;ll let you discover that part yourself.</p>
+</div></section>
+
+<section class="steps-section"><div class="mw">
+  <h2 data-title><span>Ready when you are.</span></h2>
+  <div class="steps">
+    <div class="step" data-a><p class="step-n">01</p><h3>We come to you.</h3><p>We photograph your entire menu, for free. Professional shots, not the sad ones other apps auto-generate from stock photos or AI. Oh and a hype video shot in portrait. We build your profile, upload your menu, and match every price to your in-store menu. You don&#x2019;t touch a thing.</p><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a318d36d7d17f780c935b5c_step-1-mascot.png" alt="" class="step-deco" aria-hidden="true" loading="lazy"></div>
+    <div class="step" data-a data-d="1"><p class="step-n">02</p><h3>Orders flow into your kitchen.</h3><p>If you use Square, Toast, or Clover, orders show up in your POS automatically. No extra tablet cluttering your counter. No extra system to learn. If you don&#x2019;t have a POS, we give you a free web dashboard that does the same thing.</p><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a318d36b4b5f0eef731a0f9_step-2-mascot.png" alt="" class="step-deco" aria-hidden="true" loading="lazy"></div>
+    <div class="step" data-a data-d="2"><p class="step-n">03</p><h3>We handle delivery. You handle the food.</h3><p>Our network gets your food to the customer fast and intact. You do what you do best &#x2014; cook. We do the rest.</p><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a318d361dac2aa33b27aa19_step-3-mascot.png" alt="" class="step-deco" aria-hidden="true" loading="lazy"></div>
+  </div>
+</div></section>
+
+<section class="features"><div class="mw">
+  <h2 data-title><span>Everything below is <span class="br">free</span>. Yes, all of it.</span></h2>
+  <div class="feat-grid" data-a>
+    <div class="feat-col">
+      <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><h4>Professional menu photography</h4><p>Real photos of your real food. Not stock images. Not random AI shots. As well as a single hype video.</p></div>
+      <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="7" height="7" rx="1"/><rect x="9" y="11" width="7" height="7" rx="1"/><rect x="15" y="2" width="7" height="7" rx="1"/></svg></div><h4>Toast integration fee covered</h4><p>That $75/month third-party fee? We eat it. Figuratively.</p></div>
+      <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg></div><h4>Real-time dashboard</h4><p>See every order, every dollar, every metric. Your data. Not ours.</p></div>
+      <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8H8m8 4H8m8 4H8"/></svg></div><h4>POS integration</h4><p>Square, Toast, Clover. Orders go straight to your kitchen. No extra hardware.</p></div>
+    </div>
+    <div class="feat-col">
+      <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div><h4>Customer data</h4><p>You get to know who&#x2019;s ordering from you so that if you have a special offer, promo, or new item, you can let them know! Novel concept, we know.</p></div>
+      <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></div><h4>No contract.</h4><p>Leave whenever you want, as long as you let us know after your restaurant closes at the end of the day. Though nobody has yet. Just saying.</p></div>
+      <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="m3 7 5 5-5 5"/><path d="M11 17h10"/></svg></div><h4>Price parity enforcement</h4><p>We make sure your prices on nomnomnom match your in-store prices. Your brand integrity matters to us even if it doesn&#x2019;t matter to the other guys.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="launch"><div class="mw">
+  <h2 data-title><span>Launching in Irvine with 30+ restaurants.</span></h2>
+  <p data-a>We&#x2019;re onboarding restaurants across Irvine Spectrum, Quail Hill, and Jeffrey Road. If you want to be part of the launch, now is the time &#x2014; early restaurants get priority placement and a direct line to the founding team.</p>
+</div></section>
+
+<section class="cta" id="waitlist">
+  <h2 data-title><span>You just read an entire page about delivery fees. You clearly care. Sign up.</span></h2>
+  <button class="btn-d" onclick="openM()">Get started &#x2014; it&#x2019;s free</button>
+  <p class="cta-fine">No contract. No setup fee. Leave whenever you want.</p>
+</section>
+
+<footer class="ft">
+  <div class="ft-logo"><img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a32ed24755daa417f73a045_footer-logo.svg" alt="nomnomnom" width="73" height="64"></div>
+  <div class="ft-r"><span class="cp">All rights reserved&#xa9; &#x2022; nomnomnom</span><span class="md">Made with &#x1F9E1; in Irvine, California</span><span class="lg">Privacy policy &#x2022; Terms of service</span></div>
+</footer>
+
+<div class="mo" id="mo"><div class="mo-box"><button class="mo-x" onclick="closeM()">&#xd7;</button><div class="mo-form" id="mf"><h3>Get your restaurant on nomnomnom</h3><p class="mo-sub">We&#x2019;ll reach out to schedule your free menu photoshoot and get you set up.</p><div class="mo-err" id="merr"></div><input type="text" class="mo-in" id="mrn" placeholder="Restaurant name"><input type="email" class="mo-in" id="me" placeholder="Email address" required><input type="tel" class="mo-in" id="mp" placeholder="Phone number"><button class="mo-go" id="mbtn" onclick="sub()">Join nomnomnom</button></div><div class="mo-ok" id="mok"><h3>You&#x2019;re in &#x1F389;</h3><p class="mo-sub">We&#x2019;ll reach out soon to schedule your free menu photoshoot. Get ready to keep more of every order.</p></div></div></div>
+
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.1});
+requestAnimationFrame(()=>{requestAnimationFrame(()=>{document.querySelectorAll('[data-a],[data-img],[data-title]').forEach(el=>io.observe(el))})});
+
+let currentRate=15;
+function setRate(r){currentRate=r;document.querySelectorAll('.calc-pill').forEach(p=>{p.classList.toggle('active',parseInt(p.dataset.rate)===r)});calcUpdate()}
+function calcUpdate(){const a=parseInt(document.getElementById('aov').value),o=parseInt(document.getElementById('orders').value);document.getElementById('aov-val').textContent=a;document.getElementById('orders-val').textContent=o;const y=a*o*365,c=Math.round(y*(currentRate/100)),n=Math.round(y*.12);document.getElementById('current-cost').textContent='~$'+c.toLocaleString()+'/year in commissions';document.getElementById('nom-cost').textContent="you'd pay ~$"+n.toLocaleString()+'/year'}
+
+function openM(){document.getElementById('mo').classList.add('open');document.body.style.overflow='hidden'}
+function closeM(){document.getElementById('mo').classList.remove('open');document.body.style.overflow=''}
+document.getElementById('mo').addEventListener('click',e=>{if(e.target===e.currentTarget)closeM()});
+
+const SB_URL='https://fxysricxhjyreoxrcwsd.supabase.co',SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4eXNyaWN4aGp5cmVveHJjd3NkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5OTgyMDUsImV4cCI6MjA5NTU3NDIwNX0.BPYZ_Qlg1TmjvTtnTiE4b2ttSzk2bvC9-RurmFGastc';
+async function sub(){const e=document.getElementById('me').value.trim(),p=document.getElementById('mp').value.trim(),err=document.getElementById('merr'),btn=document.getElementById('mbtn');if(!e||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){err.textContent='Please enter a valid email address.';document.getElementById('me').style.borderColor='var(--red)';return}err.textContent='';btn.disabled=true;btn.textContent='Joining...';try{const r=await fetch(SB_URL+'/rest/v1/waitlist',{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},body:JSON.stringify({email:e,phone:p||null,source:'restaurant_page'})});if(r.ok||r.status===201){document.getElementById('mf').classList.add('hide');document.getElementById('mok').classList.add('show')}else{const d=await r.json().catch(()=>({}));err.textContent=d.message&&d.message.includes('duplicate')?"You're already on the list! We'll reach out soon.":'Something went wrong. Try again?';btn.disabled=false;btn.textContent='Join nomnomnom'}}catch(x){err.textContent='Network error. Try again.';btn.disabled=false;btn.textContent='Join nomnomnom'}}
+</script>
+</body>
+</html>
