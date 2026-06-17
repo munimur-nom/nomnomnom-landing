@@ -106,9 +106,10 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 .hscroll{
   display:flex;gap:16px;overflow-x:auto;
   scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
-  padding-left:16px;padding-right:16px;scroll-padding-left:16px;scrollbar-width:none;
+  padding-left:16px;scroll-padding-left:16px;scrollbar-width:none;
 }
 .hscroll::-webkit-scrollbar{display:none}
+.hscroll::after{content:'';flex:0 0 16px;}
 .sc{
   flex:0 0 320px;scroll-snap-align:start;
   background:var(--surface);border-radius:12px;
@@ -294,6 +295,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
   /* --- Scam cards: row, no scroll --- */
   .scams{padding:0 40px 40px}
   .hscroll{overflow:visible;justify-content:center;padding:0}
+  .hscroll::after{display:none}
   .sc{flex:0 0 320px;scroll-snap-align:unset}
   
   /* --- How It Works --- */
