@@ -35,25 +35,25 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 
 .pain{padding:40px 16px}
 .pain h2{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;margin-bottom:24px}
-.pain-list{display:flex;flex-direction:column;gap:16px;padding-left:32px;border-left:1px solid var(--red);position:relative}
+.pain-list{display:flex;flex-direction:column;gap:16px;padding-left:40px;border-left:1px solid var(--red);position:relative;margin-left:12px}
 .pain-item{position:relative;font-size:16px;line-height:24px}
-.pain-item::before{content:'';position:absolute;left:-38px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--red)}
+.pain-item::before{content:'';position:absolute;left:-44px;top:0;width:24px;height:24px;border-radius:50%;background:var(--red)}
 
 .trans-section{padding:40px 16px;text-align:center}
 .trans-section h3{font-family:Geom,sans-serif;font-weight:700;font-size:18px;line-height:24px;margin-bottom:8px}
 
 .compare{padding:40px 16px}
 .compare h2{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;text-align:center;margin-bottom:24px}
-.cmp-header{display:flex;justify-content:space-between;text-align:center;margin-bottom:24px;font-weight:600;font-size:14px}
+.cmp-header{display:flex;justify-content:space-between;text-align:center;margin-bottom:24px;font-weight:600;font-size:14px;max-width:361px;margin-inline:auto}
 .cmp-header span{width:96px}
 .cmp-group{margin-bottom:40px}
 .cmp-group-title{font-weight:600;font-size:16px;line-height:24px;text-align:center;margin-bottom:24px}
 .cmp-label{display:flex;align-items:center;gap:8px;margin-bottom:12px}
 .cmp-label span{font-weight:600;font-size:10px;line-height:12px;color:var(--gray);text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
 .cmp-label::before,.cmp-label::after{content:'';flex:1;height:1px;background:var(--surface)}
-.cmp-vals{display:flex;justify-content:space-between;text-align:center;margin-bottom:16px}
+.cmp-vals{display:flex;justify-content:space-between;text-align:center;margin-bottom:16px;max-width:361px;margin-inline:auto}
 .cmp-vals p{width:96px;font-family:Geom,sans-serif;font-weight:700;font-size:18px;line-height:24px}
-.cmp-sub{display:flex;justify-content:space-between;text-align:center;margin-top:-12px;margin-bottom:16px}
+.cmp-sub{display:flex;justify-content:space-between;text-align:center;margin-top:-12px;margin-bottom:16px;max-width:361px;margin-inline:auto}
 .cmp-sub p{width:96px;font-size:14px;line-height:20px}
 .savings-call{font-weight:600;font-size:16px;line-height:24px;text-align:center;margin:24px 0}
 
@@ -63,6 +63,9 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 .calc-field label{display:block;font-weight:600;font-size:16px;line-height:24px;margin-bottom:8px}
 .calc-slider{width:100%;max-width:361px;height:6px;border-radius:999px;-webkit-appearance:none;appearance:none;background:var(--surface);outline:none}
 .calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:40px;height:40px;border-radius:50%;background:var(--brand);cursor:pointer}
+.calc-slider::-moz-range-thumb{width:40px;height:40px;border-radius:50%;background:var(--brand);cursor:pointer;border:none}
+.calc-slider::-webkit-slider-runnable-track{height:6px;border-radius:999px}
+.calc-slider::-moz-range-track{height:6px;border-radius:999px;background:var(--surface)}
 .calc-pills{display:flex;gap:10px;max-width:361px;margin:0 auto}
 .calc-pill{flex:1;height:40px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--surface);border-radius:10px;font-weight:500;font-size:14px;color:#f5f5f5;cursor:pointer;transition:background .2s,border-color .2s}
 .calc-pill.active{background:var(--white);color:var(--dark);border-color:var(--white)}
@@ -83,7 +86,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 .features{padding:40px 16px}
 .features h2{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;margin-bottom:24px}
 .feat-grid{display:flex;gap:12px}
-.feat-col{flex:1;display:flex;flex-direction:column;gap:12px}
+.feat-col{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0}
 .feat-col:last-child{margin-top:40px}
 .feat-card{background:var(--surface);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px}
 .feat-icon{width:40px;height:40px;background:var(--surface-dark);border-radius:50%;display:flex;align-items:center;justify-content:center}
