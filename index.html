@@ -236,23 +236,73 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 /* --- Desktop --- */
 @media(min-width:768px){
   .mw{max-width:600px}
-  .hero h1{font-size:40px;line-height:48px}
-  .hero-sub{font-size:28px;line-height:36px}
   .hero-mascot{max-width:400px}
-  .comp-intro{font-size:28px;line-height:36px}
   .sc{flex:0 0 360px}.pc{flex:0 0 360px}
 }
 @media(min-width:1024px){
-  .mw{max-width:800px}
-  .hero h1{font-size:48px;line-height:56px}
-  .hero-sub{font-size:32px;line-height:40px}
-  .hero-body{font-size:18px;max-width:600px;margin-inline:auto;margin-bottom:32px}
-  .btn-w,.btn-d{max-width:400px}
-  .checkout img{max-width:420px}
-  .how>h2,.rest h2,.prom h2{font-size:32px;line-height:40px}
+  /* --- Layout --- */
+  .mw{max-width:1211px;padding-inline:40px}
+  
+  /* --- Hero desktop: keep same sizes, widen body --- */
+  .hero{padding:40px 40px 40px}
+  .hero .mw{max-width:600px}
+  .hero-mascot{max-width:361px}
+  .hero-body{max-width:529px;margin-inline:auto}
+  .btn-w,.btn-d{max-width:361px}
+  
+  /* --- Checkout --- */
+  .checkout{padding:0 40px 40px}
+  .checkout img{max-width:361px}
+  
+  /* --- Comparison desktop: side-by-side intro, all tabs visible --- */
+  .comp{padding:40px 40px}
+  .comp .mw{max-width:1211px}
+  .comp-top{display:flex;gap:64px;align-items:flex-start;margin-bottom:24px}
+  .comp-intro{flex:0 0 705px;margin-bottom:0}
+  .comp-body{flex:1;margin-bottom:0}
+  .tabs{margin-bottom:16px}
+  .tab{font-size:16px;height:36px}
+  /* Show all 3 tab panels side by side */
+  .tab-panels{display:flex;gap:24px}
+  .tp{display:block!important;flex:1;min-width:0}
+  .comp-call{margin-top:24px}
+  .comp-sum{background:var(--surface);border-radius:999px;padding:24px 40px;text-align:center;max-width:880px;margin:56px auto 0}
+  .comp-sum-lab{text-align:center}
+  .comp-sum h3{text-align:center}
+  .comp-sum p{text-align:center}
+  
+  /* --- Tour desktop: stacked vertically, centered --- */
+  .tour{flex-direction:column;align-items:center;text-align:center;gap:12px;max-width:400px}
+  .tour-mascot{width:230px}
+  .tour h2{text-align:center}
+  
+  /* --- Scam cards: row, no scroll --- */
+  .scams{padding:0 40px 40px}
+  .hscroll{overflow:visible;justify-content:center;padding:0}
+  .sc{flex:0 0 320px;scroll-snap-align:unset}
+  
+  /* --- How It Works --- */
+  .how{max-width:1211px;padding:40px 40px}
   .steps{flex-direction:row;gap:24px}
-  .step{flex:1}
-  .lgrid{max-width:700px;margin:0 auto 24px}
+  .step{flex:1;min-width:0}
+  
+  /* --- Restaurants --- */
+  .rest{padding:40px}
+  .rest h2{max-width:445px;margin-inline:auto}
+  .rest-sub{max-width:560px;margin-inline:auto;margin-bottom:40px}
+  .lgrid{max-width:449px;margin:0 auto 24px}
+  
+  /* --- Promises: row, no scroll --- */
+  .prom{padding:40px 40px}
+  .prom .hscroll{overflow:visible;justify-content:center;padding:0;flex-wrap:nowrap}
+  .pc{flex:0 0 320px;scroll-snap-align:unset}
+  
+  /* --- CTA desktop --- */
+  .cta{padding:40px;max-width:100%}
+  .cta h2{max-width:500px;margin-inline:auto;margin-bottom:24px}
+  
+  /* --- Footer desktop: wider padding --- */
+  .ft{padding:16px 128px}
 }
 </style>
 </head>
@@ -281,15 +331,17 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 <!-- ===== COMPARISON ===== -->
 <section class="comp">
 <div class="mw">
+<div class="comp-top">
   <h2 class="comp-intro" data-a>Let&rsquo;s say you order Chipotle for lunch, and you got some chips &amp; guac, and a burrito bowl.</h2>
   <p class="comp-body" data-a data-d="1">Your food delivery receipt, explained by someone who actually gives a damn.</p>
+  </div>
 
   <div class="tabs" role="tablist">
     <button class="tab on" role="tab" aria-selected="true" data-t="dd">DoorDash &#x1F921;</button>
     <button class="tab" role="tab" aria-selected="false" data-t="uber">Uber Eats &#x1F921;</button>
     <button class="tab" role="tab" aria-selected="false" data-t="nom">nomnomnom &#x1F60C;</button>
   </div>
-  <div>
+  <div class="tab-panels">
     <div class="tp on" data-p="dd" role="tabpanel"><img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302281681397d9c7c3c7c9_dd-tab-wrapper.png" alt="DoorDash Chipotle receipt with hidden markups annotated" loading="lazy" width="722" height="1422"></div>
     <div class="tp" data-p="uber" role="tabpanel"><img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302282f6ce0252ef2b6230_uber-tab-wrapper.png" alt="Uber Eats Chipotle receipt with hidden fees annotated" loading="lazy" width="722" height="1422"></div>
     <div class="tp" data-p="nom" role="tabpanel"><img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302282f6ce0252ef2b6248_nomnomnom-tab-wrapper.png" alt="nomnomnom receipt with honest transparent pricing" loading="lazy" width="722" height="1422"></div>
