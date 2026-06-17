@@ -39,6 +39,8 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 /* --- Hero --- */
 .hero{padding:32px 16px 40px;text-align:center;position:relative}
 .hero .mw{display:flex;flex-direction:column;align-items:center}
+.hero-sub--desktop{display:none}
+.panel-call{display:none}
 .hero-logo{
   display:inline-flex;align-items:center;
   background:rgba(20,20,23,.64);border-radius:999px;
@@ -243,7 +245,18 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
   /* --- Layout --- */
   .mw{max-width:1211px;padding-inline:40px}
   
-  /* --- Hero desktop: keep same sizes, widen body --- */
+  /* --- Hero desktop: swap H2 text --- */
+  .hero-sub--mobile{display:none!important}
+  .hero-sub--desktop{display:block!important}
+  
+  /* --- Comparison desktop: reorder tabs nomnomnom→Uber→DD --- */
+  .tab[data-t="nom"]{order:-1}
+  .tab[data-t="dd"]{order:1}
+  .tp[data-p="nom"]{order:-1}
+  .tp[data-p="dd"]{order:1}
+  /* Show per-panel callouts, hide shared callout */
+  .comp-call{display:none}
+  .panel-call{display:flex;align-items:center;justify-content:center;background:var(--surface);border-radius:12px;padding:8px;margin-top:8px;font-weight:600;font-size:14px;line-height:24px;text-align:center}
   .hero{padding:40px 40px 40px}
   .hero .mw{max-width:600px}
   .hero-mascot{max-width:361px}
@@ -316,7 +329,8 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
   </div>
   <img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a30223f8a6089ae6c4a14ef_hero-mascot.png" alt="nomnomnom mascot" class="hero-mascot" loading="eager" width="722" height="716">
   <h1 data-a data-d="1">Your $32 dinner is <span class="r">$47</span> on DoorDash.</h1>
-  <p class="hero-sub" data-a data-d="2">What the <span class="r">f**k</span> is that.</p>
+  <p class="hero-sub hero-sub--mobile" data-a data-d="2">What the <span class="r">f**k</span> is that.</p>
+  <p class="hero-sub hero-sub--desktop" data-a data-d="2">This doesn&rsquo;t sound right.</p>
   <p class="hero-body" data-a data-d="3">Order from the same restaurants you already love. Same food. Minus the part where a Silicon Valley company pickpockets you at checkout.</p>
   <button class="btn-w" data-a data-d="4" onclick="openM()">Get 3 Free Deliveries</button>
   <p class="hero-fine" data-a data-d="5">First 500 signups. No credit card. No catch.</p>
@@ -342,9 +356,9 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
     <button class="tab" role="tab" aria-selected="false" data-t="nom">nomnomnom &#x1F60C;</button>
   </div>
   <div class="tab-panels">
-    <div class="tp on" data-p="dd" role="tabpanel"><img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302281681397d9c7c3c7c9_dd-tab-wrapper.png" alt="DoorDash Chipotle receipt with hidden markups annotated" loading="lazy" width="722" height="1422"></div>
-    <div class="tp" data-p="uber" role="tabpanel"><img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302282f6ce0252ef2b6230_uber-tab-wrapper.png" alt="Uber Eats Chipotle receipt with hidden fees annotated" loading="lazy" width="722" height="1422"></div>
-    <div class="tp" data-p="nom" role="tabpanel"><img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302282f6ce0252ef2b6248_nomnomnom-tab-wrapper.png" alt="nomnomnom receipt with honest transparent pricing" loading="lazy" width="722" height="1422"></div>
+    <div class="tp on" data-p="dd" role="tabpanel"><img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302281681397d9c7c3c7c9_dd-tab-wrapper.png" alt="DoorDash Chipotle receipt with hidden markups annotated" loading="lazy" width="722" height="1422"><div class="panel-call">This costs <span class="r">&nbsp;$4.83 more&nbsp;</span> than on nomnomnom</div></div>
+    <div class="tp" data-p="uber" role="tabpanel"><img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302282f6ce0252ef2b6230_uber-tab-wrapper.png" alt="Uber Eats Chipotle receipt with hidden fees annotated" loading="lazy" width="722" height="1422"><div class="panel-call">This costs <span class="r">&nbsp;$9.05 more&nbsp;</span> than on nomnomnom</div></div>
+    <div class="tp" data-p="nom" role="tabpanel"><img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302282f6ce0252ef2b6248_nomnomnom-tab-wrapper.png" alt="nomnomnom receipt with honest transparent pricing" loading="lazy" width="722" height="1422"><div class="panel-call panel-call--nom">This is what <span class="g">&nbsp;honest pricing&nbsp;</span> looks like</div></div>
   </div>
   <div class="comp-call" id="callout">This costs <span class="r">&nbsp;$4.83 more&nbsp;</span> than on nomnomnom</div>
 
