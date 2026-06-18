@@ -490,6 +490,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
       <div class="mo-err" id="merr"></div>
       <input type="email" class="mo-in" id="me" placeholder="Email address" required>
       <input type="tel" class="mo-in" id="mp" placeholder="Phone number (optional)">
+      <input type="text" class="mo-in" id="mst" placeholder="State (e.g. California)">
       <button class="mo-go" id="mbtn" onclick="sub()">Join the waitlist</button>
     </div>
     <div class="mo-ok" id="mok">
@@ -556,6 +557,7 @@ const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZ
 async function sub(){
   const email=document.getElementById('me').value.trim();
   const phone=document.getElementById('mp').value.trim();
+  const state=document.getElementById('mst').value.trim();
   const err=document.getElementById('merr');
   const btn=document.getElementById('mbtn');
 
@@ -569,7 +571,7 @@ async function sub(){
     const res=await fetch(SB_URL+'/rest/v1/waitlist',{
       method:'POST',
       headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},
-      body:JSON.stringify({email,phone:phone||null,source:'landing_page'})
+      body:JSON.stringify({email,phone:phone||null,state:state||null,source:'landing_page'})
     });
     if(res.ok||res.status===201){
       document.getElementById('mf').classList.add('hide');
