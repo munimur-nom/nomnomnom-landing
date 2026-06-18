@@ -426,7 +426,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
   <h2 data-title><span>Restaurants you love, at prices you won&rsquo;t want to throw your phone at.</span></h2>
   <p class="rest-sub mw">Launching with 30+ restaurants near Irvine Spectrum, Quail Hill, and Jeffrey Road. New restaurants every week because it turns out owners love keeping an extra $15,000/year.</p>
   <div class="lgrid mw"><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a30224a6e0e032360cb2e28_restaurant-logos.png" alt="Partner restaurant logos" loading="lazy" width="786" height="424"></div>
-  <p class="rest-req">Don&rsquo;t see a spot you love? <a href="#" onclick="openM();return false">Drop us the name</a>. We&rsquo;ll show up at their door with math they can&rsquo;t argue with.</p>
+  <p class="rest-req">Don&rsquo;t see a spot you love? <a href="#" onclick="openRS();return false">Drop us the name</a>. We&rsquo;ll show up at their door with math they can&rsquo;t argue with.</p>
 </section>
 
 <!-- ===== PROMISES ===== -->
@@ -484,6 +484,24 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
   </div>
 </div>
 
+<!-- Restaurant Suggestion Modal -->
+<div class="mo" id="rs-mo">
+  <div class="mo-box">
+    <button class="mo-x" onclick="closeRS()">&times;</button>
+    <div id="rs-form">
+      <h3>Request a restaurant</h3>
+      <p class="mo-sub">Tell us which spot you want on nomnomnom. We&rsquo;ll reach out to them.</p>
+      <div class="mo-err" id="rs-err"></div>
+      <input type="text" class="mo-in" id="rs-name" placeholder="Restaurant name" required>
+      <button class="mo-go" id="rs-btn" onclick="subRS()">Submit</button>
+    </div>
+    <div class="mo-ok" id="rs-ok">
+      <h3>Got it!</h3>
+      <p class="mo-sub">We&rsquo;ll reach out to them with math they can&rsquo;t argue with.</p>
+    </div>
+  </div>
+</div>
+
 <script>
 // === Tabs ===
 document.querySelectorAll('.tab').forEach(t=>{
@@ -502,6 +520,11 @@ document.querySelectorAll('.tab').forEach(t=>{
 function openM(){document.getElementById('mo').classList.add('open');document.body.style.overflow='hidden'}
 function closeM(){document.getElementById('mo').classList.remove('open');document.body.style.overflow=''}
 document.getElementById('mo').addEventListener('click',e=>{if(e.target===e.currentTarget)closeM()});
+
+// === Restaurant Suggestion Modal ===
+function openRS(){document.getElementById('rs-mo').classList.add('open');document.body.style.overflow='hidden'}
+function closeRS(){document.getElementById('rs-mo').classList.remove('open');document.body.style.overflow=''}
+document.getElementById('rs-mo').addEventListener('click',e=>{if(e.target===e.currentTarget)closeRS()});
 
 // === Scroll Reveal ===
 const io=new IntersectionObserver((entries)=>{
@@ -551,6 +574,32 @@ async function sub(){
   }catch(e){
     err.textContent='Network error. Check your connection and try again.';
     btn.disabled=false;btn.textContent='Join the waitlist';
+  }
+}
+
+// === Restaurant Suggestion Submit ===
+async function subRS(){
+  const name=document.getElementById('rs-name').value.trim();
+  const err=document.getElementById('rs-err');
+  const btn=document.getElementById('rs-btn');
+  if(!name){err.textContent='Please enter a restaurant name.';document.getElementById('rs-name').style.borderColor='var(--red)';return}
+  err.textContent='';btn.disabled=true;btn.textContent='Submitting...';
+  try{
+    const res=await fetch(SB_URL+'/rest/v1/restaurant_suggestions',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},
+      body:JSON.stringify({restaurant_name:name})
+    });
+    if(res.ok||res.status===201){
+      document.getElementById('rs-form').classList.add('hide');
+      document.getElementById('rs-ok').classList.add('show');
+    }else{
+      err.textContent='Something went wrong. Try again?';
+      btn.disabled=false;btn.textContent='Submit';
+    }
+  }catch(e){
+    err.textContent='Network error. Try again.';
+    btn.disabled=false;btn.textContent='Submit';
   }
 }
 </script>
