@@ -375,11 +375,11 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
     <button class="tab" role="tab" aria-selected="false" data-t="nom">nomnomnom &#x1F60C;</button>
   </div>
   <div class="tab-panels">
-    <div class="tp on" data-p="dd" role="tabpanel"><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302281681397d9c7c3c7c9_dd-tab-wrapper.png" alt="DoorDash Chipotle receipt with hidden markups annotated" loading="lazy" width="722" height="1422"><div class="panel-call">This costs <span class="r">&nbsp;$4.83 more&nbsp;</span> than on nomnomnom</div></div>
-    <div class="tp" data-p="uber" role="tabpanel"><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302282f6ce0252ef2b6230_uber-tab-wrapper.png" alt="Uber Eats Chipotle receipt with hidden fees annotated" loading="lazy" width="722" height="1422"><div class="panel-call">This costs <span class="r">&nbsp;$9.05 more&nbsp;</span> than on nomnomnom</div></div>
-    <div class="tp" data-p="nom" role="tabpanel"><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302282f6ce0252ef2b6248_nomnomnom-tab-wrapper.png" alt="nomnomnom receipt with honest transparent pricing" loading="lazy" width="722" height="1422"><div class="panel-call panel-call--nom">This is what <span class="g">&nbsp;honest pricing&nbsp;</span> looks like</div></div>
+    <div class="tp on" data-p="dd" role="tabpanel"><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302281681397d9c7c3c7c9_dd-tab-wrapper.png" alt="DoorDash Chipotle receipt with hidden markups annotated" loading="lazy" width="722" height="1422"><div class="panel-call">This costs <span class="r">&nbsp;$2.83 more&nbsp;</span> than on nomnomnom</div></div>
+    <div class="tp" data-p="uber" role="tabpanel"><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302282f6ce0252ef2b6230_uber-tab-wrapper.png" alt="Uber Eats Chipotle receipt with hidden fees annotated" loading="lazy" width="722" height="1422"><div class="panel-call">This costs <span class="r">&nbsp;$7.05 more&nbsp;</span> than on nomnomnom</div></div>
+    <div class="tp" data-p="nom" role="tabpanel"><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a39fd28ba11bcf822482654_nomnomnom-tab-v2.png" alt="nomnomnom receipt with honest transparent pricing" loading="lazy" width="722" height="1422"><div class="panel-call panel-call--nom">This is what <span class="g">&nbsp;honest pricing&nbsp;</span> looks like</div></div>
   </div>
-  <div class="comp-call" id="callout">This costs <span class="r">&nbsp;$4.83 more&nbsp;</span> than on nomnomnom</div>
+  <div class="comp-call" id="callout">This costs <span class="r">&nbsp;$2.83 more&nbsp;</span> than on nomnomnom</div>
 
   <div class="comp-sum">
     <p class="comp-sum-lab">SO IN SUMMARY</p>
@@ -527,7 +527,7 @@ document.querySelectorAll('.tab').forEach(t=>{
     t.classList.add('on');t.setAttribute('aria-selected','true');
     document.querySelector('[data-p="'+t.dataset.t+'"]').classList.add('on');
     const c=document.getElementById('callout');
-    const m={dd:'This costs <span class="r">&nbsp;$4.83 more&nbsp;</span> than on nomnomnom',uber:'This costs <span class="r">&nbsp;$9.05 more&nbsp;</span> than on nomnomnom',nom:'This is what <span class="g">&nbsp;honest pricing&nbsp;</span> looks like'};
+    const m={dd:'This costs <span class="r">&nbsp;$2.83 more&nbsp;</span> than on nomnomnom',uber:'This costs <span class="r">&nbsp;$7.05 more&nbsp;</span> than on nomnomnom',nom:'This is what <span class="g">&nbsp;honest pricing&nbsp;</span> looks like'};
     c.innerHTML=m[t.dataset.t];
   });
 });
