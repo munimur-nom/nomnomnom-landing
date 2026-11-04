@@ -567,8 +567,7 @@ requestAnimationFrame(()=>{requestAnimationFrame(()=>{
 })});
 
 // === Supabase Waitlist ===
-const SB_URL='https://fxysricxhjyreoxrcwsd.supabase.co';
-const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4eXNyaWN4aGp5cmVveHJjd3NkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5OTgyMDUsImV4cCI6MjA5NTU3NDIwNX0.BPYZ_Qlg1TmjvTtnTiE4b2ttSzk2bvC9-RurmFGastc';
+const API_URL='https://api-production-0f8d.up.railway.app/api/v1';
 
 async function sub(){
   const email=document.getElementById('me').value.trim();
@@ -584,9 +583,9 @@ async function sub(){
   err.textContent='';btn.disabled=true;btn.textContent='Joining...';
 
   try{
-    const res=await fetch(SB_URL+'/rest/v1/waitlist',{
+    const res=await fetch(API_URL+'/waitlist',{
       method:'POST',
-      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({email,phone:phone||null,state:state||null,source:'landing_page'})
     });
     if(res.ok||res.status===201){
@@ -599,12 +598,7 @@ async function sub(){
       err.textContent="You're already on the list! We'll reach out soon.";
       btn.disabled=false;btn.textContent='Join the waitlist';
     }else{
-      const d=await res.json().catch(()=>({}));
-      if(d.message&&d.message.includes('duplicate')){
-        err.textContent="You're already on the list! We'll reach out soon.";
-      }else{
-        err.textContent='Something went wrong. Try again?';
-      }
+      err.textContent='Something went wrong. Try again?';
       btn.disabled=false;btn.textContent='Join the waitlist';
     }
   }catch(e){
@@ -621,10 +615,10 @@ async function subRS(){
   if(!name){err.textContent='Please enter a restaurant name.';document.getElementById('rs-name').style.borderColor='var(--red)';return}
   err.textContent='';btn.disabled=true;btn.textContent='Submitting...';
   try{
-    const res=await fetch(SB_URL+'/rest/v1/restaurant_suggestions',{
+    const res=await fetch(API_URL+'/restaurant-suggestions',{
       method:'POST',
-      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},
-      body:JSON.stringify({restaurant_name:name})
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({restaurantName:name})
     });
     if(res.ok||res.status===201){
       posthog.capture('suggest_restaurant_submitted',{restaurant_name:name});
