@@ -4,21 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>nomnomnom — Food delivery without the robbery</title>
-<meta name="description" content="Same restaurants. Same food. Way less money. $0 service fees, real menu prices, no hidden checkout surprises. Launching in Irvine, CA.">
+<meta name="description" content="Same restaurants. Same food. Way less money. $0 service fees, real menu prices, no hidden checkout surprises. Launching in Orange County and Chicago.">
 <link rel="canonical" href="https://www.getnomnomnom.com/">
 <meta property="og:site_name" content="nomnomnom">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.getnomnomnom.com/">
-<meta property="og:title" content="Your $32 dinner is $47 on other food delivery apps.">
-<meta property="og:description" content="Order from restaurants you love at actual menu prices. $0 service fee. No hidden markup. Launching in Irvine, CA.">
-<meta property="og:image" content="https://www.getnomnomnom.com/og-customer-v2.png">
+<meta property="og:title" content="Your $32 dinner is $47 on DoorDash.">
+<meta property="og:description" content="Order from restaurants you love at actual menu prices. $0 service fee. No hidden markup. Launching in Orange County and Chicago.">
+<meta property="og:image" content="https://www.getnomnomnom.com/og-customer-v3.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Your $32 dinner is $47 on other food delivery apps. nomnomnom checkout showing $0 service fees.">
+<meta property="og:image:alt" content="Your $32 dinner is $47 on DoorDash. nomnomnom checkout showing $0 service fees.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Your $32 dinner is $47 on other food delivery apps.">
-<meta name="twitter:description" content="Order from restaurants you love at actual menu prices. $0 service fee. No hidden markup. Launching in Irvine, CA.">
-<meta name="twitter:image" content="https://www.getnomnomnom.com/og-customer-v2.png">
+<meta name="twitter:title" content="Your $32 dinner is $47 on DoorDash.">
+<meta name="twitter:description" content="Order from restaurants you love at actual menu prices. $0 service fee. No hidden markup. Launching in Orange County and Chicago.">
+<meta name="twitter:image" content="https://www.getnomnomnom.com/og-customer-v3.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://www.getnomnomnom.com/#org","name":"nomnomnom","url":"https://www.getnomnomnom.com/","logo":"https://www.getnomnomnom.com/apple-touch-icon.png","email":"support@getnomnomnom.com","description":"A low-fee food delivery app with real menu prices and a $0 service fee."},
+{"@type":"WebSite","@id":"https://www.getnomnomnom.com/#site","url":"https://www.getnomnomnom.com/","name":"nomnomnom","publisher":{"@id":"https://www.getnomnomnom.com/#org"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How does nomnomnom make money?","acceptedAnswer":{"@type":"Answer","text":"Food delivery apps charge restaurants up to 30% on every order. nomnomnom charges restaurants 5-20%, and it doesn't charge customers a service fee."}},
+{"@type":"Question","name":"Where is nomnomnom launching?","acceptedAnswer":{"@type":"Answer","text":"nomnomnom is launching in Orange County, California and Chicago first."}},
+{"@type":"Question","name":"What fees does nomnomnom charge customers?","acceptedAnswer":{"@type":"Answer","text":"Customers pay real menu prices, tax, and a delivery fee. The service fee is $0."}}
+]}
+]}
+</script>
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="/favicon.png">
 <!-- PostHog -->
@@ -29,13 +40,13 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700;900&family=Geom:wght@700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700;900&family=Geom:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 [hidden]{display:none!important}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#141417;--surface:#28282e;--surface-dark:#19191b;
-  --accent:#E8652B;--red:#FF5151;--green:#33C759;
+  --bg:#141417;--surface:#232323;--light:#F2F2F2;
+  --accent:#E8652B;--brand:#FF7300;--red:#FF5151;--green:#33C759;
   --gray:#CACACA;--body1:#A9A9B0;--white:#FFF;--dark:#111;
 }
 html{scroll-behavior:smooth}
@@ -44,160 +55,118 @@ body{
   background:var(--bg);color:var(--white);
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
+  padding-bottom:calc(112px + env(safe-area-inset-bottom));
 }
 img{max-width:100%;height:auto;display:block}
 a{text-decoration:none;color:inherit}
 button{border:none;background:none;cursor:pointer;font-family:inherit}
 
 /* --- Utility --- */
-.r{color:var(--red)}.g{color:var(--green)}.gr{color:var(--gray)}.b1{color:var(--body1)}
-.mw{max-width:393px;margin-inline:auto}
+.r{color:var(--red)}.g{color:var(--green)}
+.mw{max-width:393px;margin-inline:auto;padding-inline:24px}
+.band{background:var(--light);color:var(--dark)}
+
+/* --- Header --- */
+.top{display:flex;justify-content:center;padding:16px;border-bottom:1px solid #2E2E2E}
+.top img{width:175px;height:14px}
 
 /* --- Hero --- */
-.hero{padding:32px 16px 40px;text-align:center;position:relative}
-.hero .mw{display:flex;flex-direction:column;align-items:center}
-.panel-call{display:none}
-.hero-logo{
-  display:inline-flex;align-items:center;
-  background:rgba(20,20,23,.64);border-radius:999px;
-  padding:8px 12px;margin-bottom:40px;
+.hero{padding-top:24px;padding-bottom:37px;text-align:center}
+.hero h1{font-family:Geom,sans-serif;font-weight:800;font-size:36px;line-height:40px}
+.hero h1>span{text-wrap:balance}
+.hero-sub{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;margin-top:18px}
+.hero-mascot{width:270px;margin:41px auto 0}
+.co{
+  position:relative;margin-top:-63px;background:var(--bg);
+  border:1px solid var(--white);border-radius:23px;overflow:hidden;text-align:left;
 }
-.hero-logo svg{height:17px;width:auto}
-.hero-mascot{width:100%;max-width:361px;margin-bottom:16px}
-.hero h1{font-family:Geom,sans-serif;font-weight:800;font-size:32px;line-height:40px;margin-bottom:8px;width:100%}
-.hero-sub{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;margin-bottom:16px;width:100%}
-.hero-body{font-size:16px;line-height:24px;color:var(--gray);margin-bottom:32px;width:100%}
-.btn-w{
-  display:flex;align-items:center;justify-content:center;
-  width:100%;max-width:361px;margin-bottom:16px;
-  padding:12px 16px;background:var(--white);color:var(--dark);
-  font-weight:600;font-size:16px;line-height:24px;
-  border-radius:12px;transition:transform .15s,box-shadow .15s;
+.co-head{display:flex;flex-direction:column;align-items:center;gap:3.5px;padding:14px;border-bottom:1px solid var(--surface)}
+.co-lab{font-weight:700;font-size:10.5px;line-height:14px;color:var(--body1)}
+.co-name{font-family:Geom,sans-serif;font-weight:700;font-size:16px;line-height:21px}
+.co-body{display:flex;flex-direction:column;gap:5.25px;padding:14px;font-size:12.3px;line-height:17.5px}
+.co-row{display:flex;justify-content:space-between;align-items:center;height:19.3px}
+.co-row.g{color:var(--green)}
+.co-total{box-sizing:content-box;font-weight:500;border-top:1px solid var(--surface);margin-top:7px;padding-top:12px}
+.co-save{
+  background:#000;border:1px solid var(--green);border-radius:7px;
+  box-shadow:inset 0 0 24px var(--green);
+  padding:10.5px 7px;font-weight:500;font-size:10.5px;line-height:14px;text-align:center;
 }
-.btn-w:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(255,255,255,.1)}
-.btn-d{
-  display:flex;align-items:center;justify-content:center;
-  width:100%;max-width:361px;margin:0 auto 16px;
-  padding:12px 16px;background:var(--bg);color:var(--white);
-  font-weight:600;font-size:16px;line-height:24px;
-  border-radius:12px;transition:transform .15s;
-}
-.btn-d:hover{transform:translateY(-1px)}
-.hero-fine{font-size:12px;line-height:16px}
-.hero-checkout{width:100%;max-width:361px;margin-top:24px}
 
-/* --- Checkout --- */
-.checkout{padding:0 16px 40px}
-.checkout img{max-width:361px;margin:0 auto}
+/* --- Light bands --- */
+.pitch{padding-top:64px;overflow:hidden;text-align:center}
+.pitch p{font-family:Geom,sans-serif;font-weight:800;font-size:22px;line-height:26px}
+.pitch em{font-style:normal;color:#92483E}
+.pitch img{width:108px;margin:0 auto 8px}
+.sum{padding-block:64px}
+.sum p{font-family:Geom,sans-serif;font-weight:700;font-size:24px;line-height:28px}
+.sum em{font-style:normal;color:#D41616}
 
 /* --- Comparison --- */
-.comp{padding:40px 16px}
-.comp-intro{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;margin-bottom:16px}
-.comp-body{font-size:16px;line-height:24px;color:var(--gray);margin-bottom:40px}
-.tabs{display:flex;background:var(--surface);border-radius:999px;padding:2px;margin-bottom:16px}
+.comp{padding-block:40px}
+.comp-intro{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;margin-bottom:14px}
+.comp-body{font-size:16px;line-height:24px;color:var(--gray);margin-bottom:32px}
+.tabs{display:flex;background:var(--surface);border-radius:999px;padding:2px;margin-bottom:24px}
 .tab{
   flex:1;display:flex;align-items:center;justify-content:center;
-  gap:2px;height:32px;border-radius:999px;
+  gap:2px;height:32px;border-radius:999px;white-space:nowrap;
   font-size:13px;font-weight:500;color:var(--white);transition:background .2s;
 }
+.tab i{font-style:normal;font-size:10px}
 .tab.on{background:var(--bg);font-weight:600}
+.comp-call,.panel-call{
+  background:var(--surface);border-radius:12px;padding:8px;
+  font-weight:500;font-size:14px;line-height:20px;text-align:center;
+}
+.comp-call{margin-bottom:16px}
+.panel-call{display:none}
 .tp{display:none}.tp.on{display:block}
 .tp img{width:100%;border-radius:16px}
-.comp-call{
-  background:var(--surface);border-radius:12px;
-  padding:8px 16px;margin-top:16px;
-  font-weight:600;font-size:16px;line-height:24px;text-align:center;
-}
-.comp-sum{margin-top:56px}
-.comp-sum-lab{font-weight:700;font-size:12px;line-height:16px;color:var(--body1);margin-bottom:8px}
-.comp-sum h3{font-family:Geom,sans-serif;font-weight:700;font-size:18px;line-height:24px;margin-bottom:8px}
-.comp-sum p{font-size:16px;line-height:24px;color:var(--gray)}
-
-/* --- Tour Intro --- */
-.tour{padding:40px 16px;display:flex;align-items:center;gap:12px}
-.tour-mascot{flex-shrink:0;width:132px}
-.tour h2{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px}
-
-/* --- Scam Carousel --- */
-.scams{padding:0 0 40px}
-.hscroll{
-  display:flex;gap:16px;overflow-x:auto;
-  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
-  padding-left:16px;scroll-padding-left:16px;scrollbar-width:none;
-}
-.hscroll::-webkit-scrollbar{display:none}
-.hscroll::after{content:'';flex:0 0 16px;}
-.sc{
-  flex:0 0 320px;scroll-snap-align:start;
-  background:var(--surface);border-radius:12px;
-  display:flex;flex-direction:column;min-height:400px;overflow:hidden;
-}
-.sc-ban{
-  display:flex;gap:16px;align-items:center;justify-content:center;
-  background:#D80508;font-weight:900;font-size:16px;line-height:24px;
-  padding:4px 0;overflow:hidden;white-space:nowrap;
-}
-.sc-con{padding:16px;display:flex;flex-direction:column;flex:1;justify-content:space-between}
-.sc h3{font-family:Geom,sans-serif;font-weight:700;font-size:18px;line-height:24px;margin-bottom:8px}
-.sc-bod{font-size:14px;line-height:20px;margin-bottom:16px}
-.sc-reb{background:var(--surface-dark);border-radius:12px;padding:8px;font-size:14px;line-height:20px}
-
-/* --- How It Works --- */
-.how{padding:40px 16px}
-.how>h2{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;text-align:center;margin-bottom:40px}
-.steps{display:flex;flex-direction:column;gap:40px}
-.step{background:var(--surface);border-radius:12px;padding:12px 16px 16px;position:relative}
-.step-n{font-family:Geom,sans-serif;font-weight:800;font-size:32px;line-height:40px;color:rgba(232,102,43,.4);letter-spacing:2.56px}
-.step h3{font-family:Geom,sans-serif;font-weight:700;font-size:18px;line-height:24px;margin:8px 0}
-.step p{font-size:14px;line-height:20px}
-.step-deco{position:absolute;right:-8px;top:-24px;width:90px;pointer-events:none}
+.tp img.dd{width:calc(100% + 3px);max-width:none;border-radius:0}
 
 /* --- Restaurants --- */
-.rest{padding:40px 16px;text-align:center}
+.rest{padding-top:64px;padding-bottom:64px;text-align:center}
 .rest h2{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;margin-bottom:16px}
-.rest-sub{font-size:16px;line-height:24px;color:var(--gray);margin-bottom:40px}
-.lgrid{position:relative;overflow:hidden;margin-bottom:24px}
-.lgrid::before,.lgrid::after{
-  content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;
-}
-.lgrid::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
-.lgrid::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
+.rest-sub{font-size:16px;line-height:24px}
+.rest-mascot{width:265px;margin:24px auto}
 .rest-req{font-size:14px;line-height:20px}
-.rest-req a{color:#FF7300;font-weight:500}
+.rest-req a{color:var(--brand);font-weight:500}
 
-/* --- Promises --- */
-.prom{padding:40px 0}
-.prom h2{
-  font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;
-  text-align:center;padding:0 16px;margin-bottom:24px;
+/* --- How we make money --- */
+.money{position:relative;overflow:hidden;padding:40px 24px;text-align:center}
+.money::before{
+  content:'';position:absolute;left:50%;top:-315px;width:600px;height:600px;
+  margin-left:-300px;border-radius:50%;background:#DABBB5;
 }
-.pc{
-  flex:0 0 320px;scroll-snap-align:start;
-  background:var(--surface);border-radius:12px;padding:16px;
-}
-.pc h3{font-family:Geom,sans-serif;font-weight:700;font-size:18px;line-height:24px;margin-bottom:16px}
-.pc p{font-size:14px;line-height:20px;color:var(--gray)}
-
-/* --- Sticker --- */
-.sticker{padding:20px 16px 40px;display:flex;justify-content:center}
-.sticker img{max-width:250px}
-.money{padding:40px 16px 128px}
-.money h2{font-family:Geom,sans-serif;font-weight:800;font-size:24px;line-height:32px;text-align:center;margin-bottom:24px}
-.money p{font-size:16px;line-height:24px;color:var(--gray);margin-bottom:16px;text-align:center}
-.money p:last-child{margin-bottom:0}
+.money>*{position:relative}
+.money img{width:272px;margin:0 auto 8px}
+.money-lab{font-weight:600;font-size:16px;line-height:24px}
+.money h2{font-family:Geom,sans-serif;font-weight:800;font-size:20px;line-height:28px}
+.money-card{background:var(--white);border-radius:12px;padding:12px 16px;margin:24px auto 0;max-width:345px;font-size:14px;line-height:20px}
 
 /* --- Final CTA --- */
-.cta{background:var(--white);padding:24px 16px;text-align:center;position:relative;overflow:hidden}
-.cta h2{font-family:Geom,sans-serif;font-weight:700;font-size:18px;line-height:24px;color:var(--dark);margin-bottom:24px}
-.cta .btn-d{margin-bottom:16px}
-.cta-fine{font-size:12px;line-height:16px;color:var(--dark);max-width:305px;margin:0 auto}
-.cta-mascot{display:none;position:absolute;left:120px;bottom:40px;width:200px;pointer-events:none}
+.cta{padding-block:64px}
+.cta p{font-family:Geom,sans-serif;font-weight:700;font-size:24px;line-height:28px}
 
 /* --- Footer --- */
-.ft{border-top:1px solid var(--surface);padding:16px;display:flex;align-items:center;justify-content:space-between}
-.ft-logo img{height:64px;width:auto}
+.ft{border-top:1px solid var(--surface);padding:16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.ft-logo img{height:68px;width:auto}
 .ft-r{text-align:right;display:flex;flex-direction:column;gap:5px;font-size:14px;line-height:20px}
-.ft-r .cp{color:var(--gray)}.ft-r .md{color:var(--white)}.ft-r .lg{color:var(--gray)}
+.ft-r .cp,.ft-r .lg{color:var(--gray)}
+
+/* --- Sticky CTA --- */
+.bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:900;background:var(--brand);
+  display:flex;flex-direction:column;gap:16px;
+  padding:16px 16px calc(16px + env(safe-area-inset-bottom));
+}
+.bar button{
+  width:100%;padding:12px 16px;background:var(--white);color:var(--dark);
+  font-family:Geom,sans-serif;font-weight:600;font-size:16px;line-height:24px;
+  border-radius:12px;transition:transform .15s;
+}
+.bar button:hover{transform:translateY(-1px)}
+.bar p{font-weight:500;font-size:12px;line-height:16px;color:var(--dark);text-align:center}
 
 /* --- Modal --- */
 .mo{
@@ -207,7 +176,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 }
 .mo.open{display:flex}
 .mo-box{
-  background:var(--surface);border-radius:16px;
+  background:#28282E;border-radius:16px;
   padding:32px 24px;width:100%;max-width:400px;
   text-align:center;position:relative;
 }
@@ -238,256 +207,158 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 /* --- Animations --- */
 :root{
   --ease-out:cubic-bezier(0.23,1,0.32,1);
-  --ease-in-out:cubic-bezier(0.77,0,0.175,1);
   --ease-expo:cubic-bezier(0.16,1,0.3,1);
 }
 [data-a]{opacity:0;transform:translateY(16px)}
 [data-a].in{opacity:1;transform:none;transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
-/* Stagger */
 [data-d="1"].in{transition-delay:60ms}
 [data-d="2"].in{transition-delay:120ms}
 [data-d="3"].in{transition-delay:180ms}
-[data-d="4"].in{transition-delay:240ms}
-[data-d="5"].in{transition-delay:300ms}
-/* Cards: horizontal slide */
-.sc[data-a],.pc[data-a]{transform:translateX(24px)}
-/* Step cards: scale */
-.step[data-a]{transform:translateY(16px) scale(0.97)}
-.step[data-a].in{transform:none}
-
-/* Images: fade in + slide up (200ms) when in view */
 [data-img]{opacity:0;transform:translateY(20px)}
 [data-img].in{opacity:1;transform:none;transition:opacity 1.5s var(--ease-out),transform 1.5s var(--ease-out)}
-
-/* Titles: clip text-reveal (mask wipe up) */
 [data-title]{overflow:hidden;display:block}
 [data-title]>span{display:block;transform:translateY(110%);transition:transform 1.3s var(--ease-expo);padding-bottom:0.08em}
 [data-title].in>span{transform:translateY(0)}
-
-/* Reduced motion */
 @media(prefers-reduced-motion:reduce){
   [data-a],[data-img]{opacity:1!important;transform:none!important;transition:none!important}
   [data-title]>span{transform:none!important;transition:none!important}
 }
 
-/* --- Desktop --- */
+/* --- Tablet --- */
 @media(min-width:768px){
-  .mw{max-width:600px}
-  .hero-mascot{max-width:400px}
-  .sc{flex:0 0 360px}.pc{flex:0 0 360px}
+  body{padding-bottom:72px}
+  .mw{max-width:640px}
+  .bar{flex-direction:row-reverse;justify-content:center;align-items:center;gap:24px;padding-block:12px}
+  .bar button{width:280px}
+  .bar p{font-size:14px;line-height:20px}
+  .hero-mascot{width:320px}
+  .co{max-width:460px;margin-inline:auto;margin-top:-75px}
+  .hero h1{font-size:48px;line-height:56px}
+  .hero-sub{font-size:28px;line-height:36px}
+  .pitch p{font-size:28px;line-height:34px}
+  .pitch img{width:128px;margin-top:8px}
+  .sum p,.cta p{font-size:28px;line-height:34px}
+  .money::before{width:900px;height:900px;margin-left:-450px;top:-560px}
+  .tp img.dd{width:100%;max-width:100%}
 }
+
+/* --- Desktop: all three receipts side by side, nomnomnom first --- */
 @media(min-width:1024px){
-  /* --- Layout --- */
-  .mw{max-width:1211px;padding-inline:40px}
-  .money .mw{max-width:700px}
-  
-  /* --- Hero desktop --- */
-  .hero .mw{max-width:900px}
-  .hero h1>span{text-wrap:balance}
-  .hero-body{max-width:529px}
-  .tab.on{background:transparent}
-  
-  /* --- Comparison desktop: reorder tabs nomnomnom→Uber→DD --- */
-  .tab[data-t="nom"]{order:-1}
-  .tab[data-t="dd"]{order:1}
-  .tp[data-p="nom"]{order:-1}
-  .tp[data-p="dd"]{order:1}
-  /* Show per-panel callouts, hide shared callout */
-  .comp-call{display:none}
-  .panel-call{display:flex;align-items:center;justify-content:center;background:var(--surface);border-radius:12px;padding:8px;margin-top:8px;font-weight:600;font-size:14px;line-height:24px;text-align:center}
-  .hero{padding:40px 40px 40px}
-  .hero .mw{max-width:900px}
-  .hero-mascot{max-width:361px}
-  .hero-body{max-width:529px;margin-inline:auto}
-  .btn-w,.btn-d{max-width:361px}
-  
-  /* --- Checkout --- */
-  .checkout{padding:0 40px 40px}
-  .checkout img{max-width:361px}
-  
-  /* --- Comparison desktop: side-by-side intro, all tabs visible --- */
-  .comp{padding:40px 40px}
-  .comp .mw{max-width:1211px}
-  .comp-top{display:flex;gap:64px;align-items:flex-start;margin-bottom:24px}
-  .comp-intro{flex:0 0 705px;margin-bottom:0}
+  .mw{max-width:880px}
+  .wide{max-width:1211px;padding-inline:40px}
+  .comp{padding-block:64px}
+  .comp-top{display:flex;gap:64px;align-items:flex-start;margin-bottom:32px}
+  .comp-intro{flex:0 0 58%;margin-bottom:0}
   .comp-body{flex:1;margin-bottom:0}
-  .tabs{margin-bottom:16px}
-  .tab{font-size:16px;height:36px}
-  /* Show all 3 tab panels side by side */
-  .tab-panels{display:flex;gap:24px}
+  .tabs{background:none;padding:0;gap:24px;margin-bottom:8px}
+  .tab{font-size:16px;height:36px;cursor:default}
+  .tab.on{background:transparent}
+  .tab[data-t="nom"],.tp[data-p="nom"]{order:-1}
+  .tab[data-t="dd"],.tp[data-p="dd"]{order:1}
+  .comp-call{display:none}
+  .panel-call{display:block;margin-bottom:16px}
+  .tab-panels{display:flex;gap:24px;align-items:flex-start}
   .tp{display:block!important;flex:1;min-width:0}
-  .comp-call{margin-top:24px}
-  .comp-sum{background:var(--surface);border-radius:999px;padding:24px 40px;text-align:center;max-width:880px;margin:56px auto 0}
-  .comp-sum-lab{text-align:center}
-  .comp-sum h3{text-align:center}
-  .comp-sum p{text-align:center}
-  
-  /* --- Tour desktop: stacked vertically, centered --- */
-  .tour{flex-direction:column;align-items:center;text-align:center;gap:12px;max-width:400px}
-  .tour-mascot{width:230px}
-  .tour h2{text-align:center}
-  
-  /* --- Scam cards: row, no scroll --- */
-  .scams{padding:0 40px 40px}
-  .hscroll{overflow:visible;justify-content:center;padding:0}
-  .hscroll::after{display:none}
-  .sc{flex:0 0 320px;scroll-snap-align:unset}
-  
-  /* --- How It Works --- */
-  .how{max-width:1211px;padding:40px 40px}
-  .steps{flex-direction:row;gap:24px}
-  .step{flex:1;min-width:0}
-  
-  /* --- Restaurants --- */
-  .rest{padding:40px}
-  .rest h2{max-width:445px;margin-inline:auto}
-  .rest-sub{max-width:560px;margin-inline:auto;margin-bottom:40px}
-  .lgrid{max-width:449px;margin:0 auto 24px}
-  
-  /* --- Promises: row, no scroll --- */
-  .prom{padding:40px 40px}
-  .prom .hscroll{overflow:visible;justify-content:center;padding:0;flex-wrap:nowrap}
-  .pc{flex:0 0 320px;scroll-snap-align:unset}
-  
-  /* --- CTA desktop --- */
-  .cta{padding:40px;max-width:100%}
-  .cta h2{max-width:500px;margin-inline:auto;margin-bottom:24px}
-  .cta-mascot{display:block;left:auto;right:calc(50% + 200px);bottom:0;width:220px}
-  
-  /* --- Footer desktop: wider padding --- */
   .ft{padding:16px 128px}
 }
 </style>
 </head>
 <body>
 
+<!-- ===== HEADER ===== -->
+<header class="top">
+  <img src="/logo.svg" alt="nomnomnom" width="175" height="14">
+</header>
+
+<main>
 <!-- ===== HERO ===== -->
-<section class="hero">
-<div class="mw">
-  <div class="hero-logo">
-    <svg width="210" height="17" viewBox="0 0 218 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M206.834 3.24c1.95 0 3.505.6 4.667 1.8 1.182 1.202 1.772 3.014 1.772 5.436v9.216h-6.675v-8.064c0-1.851-.601-2.777-1.802-2.777-.63 0-1.142.237-1.536.71-.374.472-.561 1.22-.561 2.245v7.886h-6.676v-8.064c0-1.851-.6-2.777-1.802-2.777-.63 0-1.142.237-1.536.71-.374.472-.561 1.22-.561 2.245v7.886h-6.676V3.535l6.351.615v.891c1.201-1.201 2.727-1.802 4.578-1.802 1.083 0 2.058.207 2.925.62.866.394 1.575 1.005 2.126 1.832.65-.788 1.438-1.388 2.363-1.802.926-.433 1.94-.65 3.043-.65Z" fill="#fff"/><path d="M156.855 3.24c1.989 0 3.584.6 4.786 1.8 1.22 1.202 1.831 3.014 1.831 5.436v9.216h-6.676v-8.064c0-1.851-.659-2.777-1.979-2.777-.748 0-1.359.266-1.831.8-.453.511-.68 1.329-.68 2.451v7.59h-6.675V3.535l6.35.615v.98c.63-.63 1.359-1.103 2.186-1.418a6.888 6.888 0 0 1 2.688-.473Z" fill="#fff"/><path d="M136.295 3.24c1.95 0 3.506.6 4.668 1.8 1.181 1.202 1.772 3.014 1.772 5.436v9.216h-6.676v-8.064c0-1.851-.6-2.777-1.802-2.777-.63 0-1.142.237-1.536.71-.374.472-.561 1.22-.561 2.245v7.886h-6.676v-8.064c0-1.851-.6-2.777-1.801-2.777-.631 0-1.143.237-1.536.71-.375.472-.562 1.22-.562 2.245v7.886h-6.676V3.535l6.35.615v.891c1.202-1.201 2.728-1.802 4.579-1.802 1.083 0 2.058.207 2.924.62.867.394 1.576 1.005 2.127 1.832.65-.788 1.438-1.388 2.363-1.802.926-.433 1.94-.65 3.043-.65Z" fill="#fff"/><path d="M86.932 3.24c1.99 0 3.585.6 4.786 1.8 1.22 1.202 1.831 3.014 1.831 5.436v9.216h-6.676v-8.064c0-1.851-.66-2.777-1.979-2.777-.749 0-1.359.266-1.831.8-.454.511-.68 1.329-.68 2.451v7.59h-6.676V3.535l6.351.615v.98c.63-.63 1.358-1.103 2.186-1.418a6.888 6.888 0 0 1 2.688-.473Z" fill="#fff"/><path d="M66.372 3.24c1.95 0 3.506.6 4.668 1.8 1.181 1.202 1.772 3.014 1.772 5.436v9.216h-6.676v-8.064c0-1.851-.6-2.777-1.802-2.777-.63 0-1.142.237-1.536.71-.374.472-.561 1.22-.561 2.245v7.886h-6.676v-8.064c0-1.851-.6-2.777-1.801-2.777-.631 0-1.143.237-1.536.71-.375.472-.562 1.22-.562 2.245v7.886H44.987V3.535l6.35.615v.891c1.202-1.201 2.728-1.802 4.579-1.802 1.083 0 2.058.207 2.924.62.867.394 1.576 1.005 2.127 1.832.65-.788 1.438-1.388 2.363-1.802.926-.433 1.94-.65 3.043-.65Z" fill="#fff"/><path d="M15.163 3.24c1.989 0 3.584.6 4.785 1.8 1.221 1.202 1.832 3.014 1.832 5.436v9.216H15.104v-8.064c0-1.851-.66-2.777-1.98-2.777-.748 0-1.358.266-1.831.8-.453.511-.68 1.329-.68 2.451v7.59H3.939V3.535l6.35.615v.98c.63-.63 1.359-1.103 2.186-1.418a6.888 6.888 0 0 1 2.688-.473Z" fill="#fff"/><path d="M33.504 3.24c1.812 0 3.426.354 4.844 1.063a20.1 20.1 0 0 0 .037.02c-.9.842-1.462 2.04-1.462 3.37 0 2.549 2.066 4.615 4.615 4.615.468 0 .919-.07 1.344-.2-.077 1.412-.475 2.689-1.196 3.833-.788 1.26-1.9 2.255-3.338 2.983-1.418.71-3.032 1.064-4.844 1.064-1.792 0-3.407-.354-4.845-1.064-1.417-.728-2.53-1.723-3.338-2.983-.807-1.28-1.211-2.727-1.211-4.342 0-1.614.404-3.052 1.211-4.312.808-1.28 1.92-2.275 3.338-2.984 1.438-.709 3.053-1.063 4.845-1.063Zm0 5.2c-.768 0-1.398.275-1.891.827-.492.551-.738 1.329-.738 2.333 0 1.004.246 1.792.738 2.363.493.551 1.123.827 1.89.827.769 0 1.4-.276 1.892-.827.491-.571.738-1.36.738-2.363 0-1.004-.247-1.782-.738-2.333-.493-.551-1.123-.827-1.891-.827Z" fill="#FF7300"/><path d="M104.778 3.24c1.812 0 3.426.354 4.844 1.063l.037.02c-.9.842-1.462 2.04-1.462 3.37 0 1.274.516 2.427 1.351 3.263-.078.336-.12.685-.12 1.045 0 2.063 1.354 3.81 3.221 4.4-.761 1.045-1.77 1.886-3.028 2.524-1.418.71-3.032 1.064-4.844 1.064-1.792 0-3.407-.355-4.845-1.064-1.417-.728-2.53-1.723-3.337-2.983-.808-1.28-1.211-2.727-1.211-4.342 0-1.614.404-3.052 1.21-4.312.808-1.28 1.921-2.275 3.338-2.984 1.438-.709 3.053-1.063 4.845-1.063Zm0 5.2c-.768 0-1.398.275-1.89.827-.493.551-.739 1.329-.739 2.333 0 1.004.246 1.792.739 2.363.492.551 1.122.827 1.89.827.768 0 1.399-.276 1.891-.827.492-.571.738-1.36.738-2.363 0-1.004-.246-1.782-.738-2.333-.492-.551-1.123-.827-1.891-.827Z" fill="#FF7300"/><ellipse cx="182.462" cy="19.692" rx=".923" ry=".615" fill="#FF7300"/><ellipse cx="180.923" cy="20" rx=".615" ry=".308" fill="#FF7300"/><path d="M175.62 3.241a7.685 7.685 0 0 0-1.576 4.451c0 .393.033.779.094 1.154a2.57 2.57 0 0 0-.481.42c-.493.55-.738 1.328-.738 2.333 0 1.004.246 1.791.738 2.362.492.551 1.122.827 1.89.827.769 0 1.399-.276 1.891-.827a2.58 2.58 0 0 0 .121-.154 5.538 5.538 0 0 0 3.561.961c.571.76 1.371 1.338 2.299 1.632-.761 1.044-1.77 1.886-3.028 2.523-1.418.709-3.032 1.064-4.844 1.064-1.792 0-3.407-.355-4.844-1.064-1.418-.729-2.531-1.723-3.338-2.984-.808-1.28-1.211-2.727-1.211-4.341 0-1.615.403-3.052 1.21-4.313.808-1.28 1.921-2.274 3.338-2.984 1.438-.709 3.053-1.063 4.845-1.063l.073.003Z" fill="#FF7300"/></svg>
+<section class="hero mw">
+  <h1 data-title><span>Your $32 dinner is <span class="r">$47</span> on DoorDash.</span></h1>
+  <p class="hero-sub" data-title><span>That doesn&rsquo;t smell right.</span></p>
+  <img data-img src="/mascot-hero.webp" alt="nomnomnom mascot with its arms crossed, wearing a cape that reads No Fee, $0" class="hero-mascot" width="540" height="628" fetchpriority="high">
+  <div class="co" data-a data-d="1" role="group" aria-label="Sample nomnomnom checkout">
+    <div class="co-head">
+      <span class="co-lab">Checkout</span>
+      <span class="co-name">Night + Market</span>
+    </div>
+    <div class="co-body">
+      <div class="co-row"><span>Subtotal</span><span>$32.00</span></div>
+      <div class="co-row"><span>Delivery fee</span><span>$7.99</span></div>
+      <div class="co-row g"><span>Service fee</span><span>$0.00</span></div>
+      <div class="co-row g"><span>Other fees</span><span>$0.00</span></div>
+      <div class="co-row g"><span>Basket size fee</span><span>$0.00</span></div>
+      <div class="co-row g"><span>Because-I-feel-like-it fee</span><span>$0.00</span></div>
+      <div class="co-row co-total"><span>Total (before tax + tip)</span><span>$39.99</span></div>
+      <div class="co-save">You&rsquo;re saving ~$7.01 vs. other delivery apps</div>
+    </div>
   </div>
-  <h1 data-title><span>Your $32 dinner is <span class="r">$47</span> on other food delivery apps.</span></h1>
-  <p class="hero-sub" data-title><span>That doesn&rsquo;t sound right.</span></p>
-  <p class="hero-body" data-a data-d="3">Order from the same restaurants you already love. Same food. Minus the part where a Silicon Valley company pickpockets you at checkout.</p>
-  <button class="btn-w" data-a data-d="4" onclick="openM('hero')">Get 3 Free Deliveries</button>
-  <p class="hero-fine" data-a data-d="5">First 500 signups. No credit card. No catch.</p>
-  <img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a39fca0d79836067b8b59f5_hero-checkout-v2.png" alt="nomnomnom checkout showing $0 service fees with mascot" class="hero-checkout" loading="lazy" width="722" height="1186">
-</div>
 </section>
 
+<!-- ===== PITCH ===== -->
+<section class="pitch band">
+  <div class="mw">
+    <p data-a>Order from the same restaurants you already love. Same food. Minus the part where a <em>Silicon Valley</em> company pickpockets you at checkout.</p>
+    <img data-img src="/mascot-poop.webp" alt="" aria-hidden="true" loading="lazy" width="420" height="464">
+  </div>
+</section>
 
 <!-- ===== COMPARISON ===== -->
 <section class="comp">
-<div class="mw">
-<div class="comp-top">
-  <h2 class="comp-intro" data-title><span>Let&rsquo;s say you order Chipotle for lunch, and you got some chips &amp; guac, and a burrito bowl.</span></h2>
-  <p class="comp-body" data-a data-d="1">Your food delivery receipt, explained by someone who actually gives a damn.</p>
+<div class="mw wide">
+  <div class="comp-top">
+    <h2 class="comp-intro" data-title><span>Let&rsquo;s say you want Chipotle for lunch. You get some chips &amp; guac, and a bowl.</span></h2>
+    <p class="comp-body" data-a data-d="1">Your food delivery receipt, explained by someone who actually gives a damn.</p>
   </div>
 
   <div class="tabs" role="tablist">
-    <button class="tab on" role="tab" aria-selected="true" data-t="dd">DoorDash</button>
-    <button class="tab" role="tab" aria-selected="false" data-t="uber">Uber Eats</button>
-    <button class="tab" role="tab" aria-selected="false" data-t="nom">nomnomnom &#x1F60C;</button>
-  </div>
-  <div class="tab-panels">
-    <div class="tp on" data-p="dd" role="tabpanel"><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302281681397d9c7c3c7c9_dd-tab-wrapper.png" alt="DoorDash Chipotle receipt with hidden markups annotated" loading="lazy" width="722" height="1422"><div class="panel-call">This costs <span class="r">&nbsp;$2.83 more&nbsp;</span> than on nomnomnom</div></div>
-    <div class="tp" data-p="uber" role="tabpanel"><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302282f6ce0252ef2b6230_uber-tab-wrapper.png" alt="Uber Eats Chipotle receipt with hidden fees annotated" loading="lazy" width="722" height="1422"><div class="panel-call">This costs <span class="r">&nbsp;$7.05 more&nbsp;</span> than on nomnomnom</div></div>
-    <div class="tp" data-p="nom" role="tabpanel"><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a39fd28ba11bcf822482654_nomnomnom-tab-v2.png" alt="nomnomnom receipt with honest transparent pricing" loading="lazy" width="722" height="1422"><div class="panel-call panel-call--nom">This is what <span class="g">&nbsp;honest pricing&nbsp;</span> looks like</div></div>
+    <button class="tab on" role="tab" aria-selected="true" data-t="dd">DoorDash <i>&#x1F921;</i></button>
+    <button class="tab" role="tab" aria-selected="false" data-t="uber">Uber Eats <i>&#x1F921;</i></button>
+    <button class="tab" role="tab" aria-selected="false" data-t="nom">nomnomnom <i>&#x1F60C;</i></button>
   </div>
   <div class="comp-call" id="callout">This costs <span class="r">&nbsp;$2.83 more&nbsp;</span> than on nomnomnom</div>
-
-  <div class="comp-sum">
-    <p class="comp-sum-lab">SO IN SUMMARY</p>
-    <h3>Orders cost less on nomnomnom<span class="gr">. While </span><span class="r">other food delivery apps</span><span class="gr"> are charging you </span><span class="r">to press some buttons</span><span class="gr">.</span></h3>
-    <p>Same food. Same restaurants. Same Tuesday night on your couch.</p>
+  <div class="tab-panels">
+    <div class="tp on" data-p="dd" role="tabpanel"><div class="panel-call">This costs <span class="r">&nbsp;$2.83 more&nbsp;</span> than on nomnomnom</div><img class="dd" data-img src="/receipt-doordash.webp" alt="DoorDash Chipotle receipt: $20.35 subtotal, $2.99 delivery fee, $3.05 service fee, $1.06 tax, $27.45 total before tip, with marked-up menu prices annotated" loading="lazy" width="1035" height="1219"></div>
+    <div class="tp" data-p="uber" role="tabpanel"><div class="panel-call">This costs <span class="r">&nbsp;$7.05 more&nbsp;</span> than on nomnomnom</div><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302282f6ce0252ef2b6230_uber-tab-wrapper.png" alt="Uber Eats Chipotle receipt totaling $31.67, with marked-up prices and extra fees annotated" loading="lazy" width="722" height="1290"></div>
+    <div class="tp" data-p="nom" role="tabpanel"><div class="panel-call">This is what <span class="g">&nbsp;honest pricing&nbsp;</span> looks like</div><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a39fd28ba11bcf822482654_nomnomnom-tab-v2.png" alt="nomnomnom Chipotle receipt: $15.80 subtotal at real menu prices, $7.99 delivery fee, $0.83 tax, $0 service fee, $24.62 total" loading="lazy" width="722" height="1268"></div>
   </div>
 </div>
 </section>
 
-<!-- ===== TOUR INTRO ===== -->
-<section class="tour mw" hidden>
-  <img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a3189e14ef50c2420f9dee1_tour-mascot.png" alt="" class="tour-mascot" aria-hidden="true" loading="lazy" width="264" height="294">
-  <h2 data-title><span>Three fees. Zero good reasons. Let&rsquo;s walk through it.</span></h2>
-</section>
-
-<!-- ===== SCAM CAROUSEL ===== -->
-<section class="scams" hidden>
-<div class="hscroll">
-  <div class="sc" data-a><div class="sc-ban"><span>SCAM 1</span><span>SCAM 1</span><span>SCAM 1</span><span>SCAM 1</span><span>SCAM 1</span></div><div class="sc-con"><div><h3>The Price Inflation</h3><p class="sc-bod">Your $12 pad thai is $14.40 on other food delivery apps. Why? Because they charge the restaurant 25-30% commission, so the restaurant raises prices to survive. You&rsquo;re paying food delivery apps commission FOR THEM without knowing it.</p></div><div class="sc-reb">On nomnomnom, we enforce real menu prices. If a restaurant tries to inflate? We remove them. We&rsquo;re strict about this because you deserve to not get robbed.</div></div></div>
-  <div class="sc" data-a data-d="1"><div class="sc-ban"><span>SCAM 2</span><span>SCAM 2</span><span>SCAM 2</span><span>SCAM 2</span><span>SCAM 2</span></div><div class="sc-con"><div><h3>The Service Fee</h3><p class="sc-bod">Food delivery apps charge a &lsquo;service fee&rsquo; of 15-18% on every order. What service? The app? You&rsquo;re already paying a delivery fee for the delivery. The service fee is a fee for&hellip; using the app that exists to charge you fees. It&rsquo;s fees all the way down.</p></div><div class="sc-reb">On nomnomnom: $0 service fee. The service is delivering your food, which is what the delivery fee is for. See how that works?</div></div></div>
-  <div class="sc" data-a data-d="2"><div class="sc-ban"><span>SCAM 3</span><span>SCAM 3</span><span>SCAM 3</span><span>SCAM 3</span><span>SCAM 3</span></div><div class="sc-con"><div><h3>The Subscription Trap</h3><p class="sc-bod">Food delivery app subscriptions cost $9.99/month for &lsquo;free delivery.&rsquo; Except the delivery isn&rsquo;t free&mdash;it&rsquo;s baked into inflated menu prices. You pay ~$120/year to feel better about getting scammed slightly less. Your $12 pad thai is still $14.40. The price inflation never goes away.</p></div><div class="sc-reb">On nomnomnom: your $12 pad thai is $12. $0 service fee. No membership required to get honest pricing.</div></div></div>
-</div>
-</section>
-
-<!-- ===== HOW IT WORKS ===== -->
-<section class="how mw" hidden>
-  <h2 data-title><span>How it works. It&rsquo;s three steps. We&rsquo;re not curing cancer here.</span></h2>
-  <div class="steps">
-    <div class="step" data-a>
-      <p class="step-n">01</p><h3>Pick a restaurant.</h3>
-      <p>Browse actual menus at actual prices. Not &lsquo;marketplace prices.&rsquo; Not &lsquo;adjusted for delivery.&rsquo; The price on the menu in the restaurant is the price on your screen. This shouldn&rsquo;t be impressive but here we are.</p>
-      <img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a318d36d7d17f780c935b5c_step-1-mascot.png" alt="" class="step-deco" aria-hidden="true" loading="lazy" width="180" height="200">
-    </div>
-    <div class="step" data-a data-d="1">
-      <p class="step-n">02</p><h3>Order your food.</h3>
-      <p>No service fee. No small order fee. No &lsquo;regulatory response fee&rsquo; (yes, that&rsquo;s a real thing DoorDash charges in some cities). Just your food + a delivery fee that actually goes toward delivery + tax.</p>
-      <img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a318d36b4b5f0eef731a0f9_step-2-mascot.png" alt="" class="step-deco" aria-hidden="true" loading="lazy" width="184" height="194">
-    </div>
-    <div class="step" data-a data-d="2">
-      <p class="step-n">03</p><h3>Eat. That&rsquo;s it.</h3>
-      <p>Food shows up. You eat it. You don&rsquo;t spend 10 minutes afterwards wondering why a burrito cost $23. The end.</p>
-      <img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a318d361dac2aa33b27aa19_step-3-mascot.png" alt="" class="step-deco" aria-hidden="true" loading="lazy" width="168" height="168">
-    </div>
+<!-- ===== SUMMARY ===== -->
+<section class="sum band">
+  <div class="mw">
+    <p data-a>Orders cost less on nomnomnom. While <em>other food delivery apps</em> are charging you to press some buttons. Same food. Same restaurants. Same Tuesday night on your couch.</p>
   </div>
 </section>
 
 <!-- ===== RESTAURANTS ===== -->
-<section class="rest">
+<section class="rest mw">
   <h2 data-title><span>Restaurants you love, at prices you won&rsquo;t want to throw your phone at.</span></h2>
-  <p class="rest-sub mw">Launching with 30+ restaurants near Irvine Spectrum, Quail Hill, and Jeffrey Road. New restaurants every week because it turns out owners love keeping an extra $15,000/year.</p>
-  <div class="lgrid mw"><img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a30224a6e0e032360cb2e28_restaurant-logos.png" alt="Partner restaurant logos" loading="lazy" width="786" height="424"></div>
-  <p class="rest-req">Don&rsquo;t see a spot you love? <a href="#" onclick="openRS();return false">Drop us the name</a>. We&rsquo;ll show up at their door with math they can&rsquo;t argue with.</p>
-</section>
-
-<!-- ===== PROMISES ===== -->
-<section class="prom" hidden>
-  <h2 data-title><span>Things we&rsquo;ll never do.</span></h2>
-  <div class="hscroll">
-    <div class="pc" data-a><h3>We&rsquo;ll never, ever, ever inflate prices.</h3><p>If a restaurant&rsquo;s pad thai is $12, it&rsquo;s $12 on nomnomnom. Period. We contractually enforce this. We audit it. If we catch a restaurant inflating, they&rsquo;re off the app. Your $12 is YOUR $12.</p></div>
-    <div class="pc" data-a data-d="1"><h3>We&rsquo;ll never charge a service fee.</h3><p>$0. Not &ldquo;$0 with [Enter subscription name here].&rdquo; Not &ldquo;$0*&rdquo; with an asterisk that leads to a footnote that leads to a Terms of Service link that leads to you paying $7.38.</p></div>
-    <div class="pc" data-a data-d="2"><h3>We&rsquo;ll never hide fees in your checkout.</h3><p>Your subtotal + delivery fee + tax = your total. That&rsquo;s it. You will never be surprised at checkout. We know that&rsquo;s a low bar. We&rsquo;re embarrassed for the industry.</p></div>
-    <div class="pc" data-a data-d="3"><h3>We&rsquo;ll never trick you into paying more.</h3><p>No pre-selected priority delivery or tips. No sneaky upsells. You add what YOU want. We trust you to make decisions, unlike the app that pre-checks a $3.99 upgrade hoping you won&rsquo;t notice.</p></div>
-  </div>
-</section>
-
-<!-- ===== STICKER ===== -->
-<section class="sticker" hidden>
-  <img data-img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a302243212123887847e569_service-fee-sticker.png" alt="$0 Service Fee. Forever." loading="lazy" width="500" height="640">
+  <p class="rest-sub" data-a>Launching in OC and Chicago first.</p>
+  <img data-img src="/mascot-burrito.webp" alt="nomnomnom mascot happily eating a burrito" class="rest-mascot" loading="lazy" width="530" height="591">
+  <p class="rest-req">Don&rsquo;t see a spot you love on the app?<br><a href="#" onclick="openRS();return false">Drop us the name</a>. We&rsquo;ll show up at their door with math they can&rsquo;t argue with.</p>
 </section>
 
 <!-- ===== HOW WE MAKE MONEY ===== -->
-<section class="money" hidden>
-<div class="mw">
-  <h2 data-title><span>You&rsquo;re wondering how we make money. Fair.</span></h2>
-  <p data-a>Restaurants on food delivery apps pay up to 30% fee on every order. That&rsquo;s why your prices are inflated &mdash; the restaurant has to cover that cost somewhere. We charge restaurants 12%. That&rsquo;s enough to run a business when you&rsquo;re not spending billions on Super Bowl ads and lobbyists.</p>
-  <p data-a>We just charge a delivery fee, which goes toward delivery (groundbreaking, we know). No tricks. No &ldquo;free now, expensive later.&rdquo;</p>
-  <p data-a>We&rsquo;re just one team in Irvine. If you want to see how the math works, order once and look at your receipt. It&rsquo;ll be the most boring receipt you&rsquo;ve ever seen. That&rsquo;s the point.</p>
-</div>
+<section class="money band">
+  <img data-img src="/mascot-investigate.webp" alt="nomnomnom mascot inspecting a receipt with a magnifying glass" loading="lazy" width="544" height="591">
+  <p class="money-lab">Yes, we know what you&rsquo;re thinking.</p>
+  <h2>So how are we making money?</h2>
+  <p class="money-card" data-a>Food delivery apps charge restaurants up to 30% on every order. With us, it&rsquo;s just 5-20%. We aren&rsquo;t trying to hire a celebrity or sponsor a Super Bowl Ad campaign, so we don&rsquo;t have to charge our customers extra fees</p>
 </section>
 
 <!-- ===== FINAL CTA ===== -->
 <section class="cta" id="waitlist">
-  <h2 data-title><span>You just read an entire page about delivery fees. You clearly care. Sign up.</span></h2>
-  <button class="btn-d" onclick="openM('final')">Claim Your 3 Free Deliveries</button>
-  <p class="cta-fine">First 500 Irvine signups. Then it&rsquo;s back to the regular price of&hellip; still saving you plenty per order. This isn&rsquo;t a bait and switch. We just want you to try it.</p>
-  <img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a31f6ac13dc0bb973114425_cta-mascot-new.png" alt="" class="cta-mascot" aria-hidden="true" loading="lazy" width="208" height="200">
+  <div class="mw">
+    <p data-a>You just read an entire site about delivery fees. You clearly care. Sign up. This isn&rsquo;t a bait and switch. We just want you to try it. What do you have to lose, other than all the extra fees you&rsquo;re already giving to these other food delivery apps?</p>
+  </div>
 </section>
+</main>
 
 <!-- ===== FOOTER ===== -->
 <footer class="ft">
   <div class="ft-logo">
-    <img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a32ed24755daa417f73a045_footer-logo.svg" alt="nomnomnom" width="73" height="64">
+    <img src="https://cdn.prod.website-files.com/6a2d60cca0b60ce8f14131d2/6a32ed24755daa417f73a045_footer-logo.svg" alt="nomnomnom" width="78" height="68">
   </div>
   <div class="ft-r">
     <span class="cp">All rights reserved&copy; &bull; nomnomnom</span>
@@ -496,13 +367,19 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
   </div>
 </footer>
 
+<!-- ===== STICKY CTA ===== -->
+<div class="bar">
+  <button onclick="openM('sticky')">Join waitlist</button>
+  <p>First 500 signups get 3 free deliveries</p>
+</div>
+
 <!-- ===== MODAL ===== -->
 <div class="mo" id="mo">
   <div class="mo-box">
     <button class="mo-x" onclick="closeM()">&times;</button>
     <div class="mo-form" id="mf">
       <h3>Get 3 free deliveries</h3>
-      <p class="mo-sub">Join the first 500 in Irvine. We&rsquo;ll let you know when we launch &mdash; won&rsquo;t be long from now!</p>
+      <p class="mo-sub">The first 500 signups in Orange County and the first 500 in Chicago each get 3 free deliveries. We&rsquo;ll let you know when we launch &mdash; won&rsquo;t be long from now!</p>
       <div class="mo-err" id="merr"></div>
       <input type="email" class="mo-in" id="me" placeholder="Email address" required>
       <input type="tel" class="mo-in" id="mp" placeholder="Phone number (optional)">
@@ -511,7 +388,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
     </div>
     <div class="mo-ok" id="mok">
       <h3>You&rsquo;re in &#x1F389;</h3>
-      <p class="mo-sub">We&rsquo;ll text you the moment nomnomnom launches in Irvine. Get ready to save real money on real food.</p>
+      <p class="mo-sub">We&rsquo;ll let you know the moment nomnomnom launches near you. Get ready to save real money on real food.</p>
     </div>
   </div>
 </div>
