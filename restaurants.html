@@ -214,7 +214,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
     <div class="cmp-label"><span>Menu price inflation</span></div><div class="cmp-vals"><p>Yes</p><p>Yes</p><p class="g">Never</p></div>
     <div class="cmp-label"><span>Customer data shared</span></div><div class="cmp-vals"><p>No</p><p>No</p><p class="g">Yes</p></div>
   </div>
-  <p class="savings-call" data-a>On a $32 order at 10 orders/day, moving from a 30% plan to our courier delivery <strong class="g">saves ~$11,680/year</strong>. With your own drivers, it&#x2019;s ~$23,360. That&#x2019;s not a typo. We double-checked.</p>
+  <p class="savings-call" data-a>On a $32 order at 10 orders/day, moving from a 30% plan to our courier delivery <strong class="g">saves ~$11,680/year</strong>. That&#x2019;s not a typo. We double-checked.</p>
 </div></section>
 
 <section class="calc"><div class="mw">
@@ -222,7 +222,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
   <div class="calc-field" data-a><label>Average order value: $<span id="aov-val">32</span></label><input type="range" class="calc-slider" id="aov" min="10" max="60" value="32" oninput="calcUpdate()"></div>
   <div class="calc-field" data-a><label>Daily delivery orders: <span id="orders-val">10</span></label><input type="range" class="calc-slider" id="orders" min="5" max="50" value="10" oninput="calcUpdate()"></div>
   <div class="calc-field" data-a><label>Current commission rate</label><div class="calc-pills"><button class="calc-pill" data-rate="15" onclick="setRate(15)">15%</button><button class="calc-pill" data-rate="20" onclick="setRate(20)">20%</button><button class="calc-pill active" data-rate="25" onclick="setRate(25)">25%</button><button class="calc-pill" data-rate="30" onclick="setRate(30)">30%</button></div></div>
-  <div class="calc-result" data-a><h3>You are currently paying<br><span class="r" id="current-cost">~$29,200/year in commissions</span>.</h3><div class="calc-divider"></div><h3>On nomnomnom,<br><span class="g" id="nom-cost">you&#x2019;d pay ~$23,360/year with our couriers</span>.</h3><p class="calc-note" id="nom-note">That saves ~$5,840/year. With your own drivers, you&#x2019;d pay ~$11,680. On pickup orders, ~$5,840.</p></div>
+  <div class="calc-result" data-a><h3>You are currently paying<br><span class="r" id="current-cost">~$29,200/year in commissions</span>.</h3><div class="calc-divider"></div><h3>On nomnomnom,<br><span class="g" id="nom-cost">you&#x2019;d pay ~$23,360/year with our couriers</span>.</h3><p class="calc-note" id="nom-note">That&#x2019;s ~$5,840/year less than you pay now.</p></div>
   <p class="calc-fine" data-a>This calculator is conservative. It doesn&#x2019;t include the $0 service fee savings your customers get &#x2014; which means they order more often. But we&#x2019;ll let you discover that part yourself.</p>
 </div></section>
 
@@ -280,7 +280,7 @@ function trackCalc(){clearTimeout(calcTimer);calcTimer=setTimeout(function(){pos
 
 let currentRate=25;
 function setRate(r){currentRate=r;document.querySelectorAll('.calc-pill').forEach(p=>{p.classList.toggle('active',parseInt(p.dataset.rate)===r)});calcUpdate();if(typeof trackCalc==='function')trackCalc()}
-function calcUpdate(){const a=parseInt(document.getElementById('aov').value),o=parseInt(document.getElementById('orders').value);document.getElementById('aov-val').textContent=a;document.getElementById('orders-val').textContent=o;const y=a*o*365,c=Math.round(y*(currentRate/100)),n=Math.round(y*.2),d=Math.round(y*.1),p=Math.round(y*.05),f=v=>'~$'+v.toLocaleString();document.getElementById('current-cost').textContent='~$'+c.toLocaleString()+'/year in commissions';document.getElementById('nom-cost').textContent="you'd pay "+f(n)+'/year with our couriers';document.getElementById('nom-note').textContent=(c>n?'That saves '+f(c-n)+'/year. ':c===n?'Same as you pay now, minus the marked-up menu. ':'Our courier rate is higher than your plan. ')+"With your own drivers, you'd pay "+f(d)+'. On pickup orders, '+f(p)+'.'}
+function calcUpdate(){const a=parseInt(document.getElementById('aov').value),o=parseInt(document.getElementById('orders').value);document.getElementById('aov-val').textContent=a;document.getElementById('orders-val').textContent=o;const y=a*o*365,c=Math.round(y*(currentRate/100)),n=Math.round(y*.2),f=v=>'~$'+v.toLocaleString();document.getElementById('current-cost').textContent='~$'+c.toLocaleString()+'/year in commissions';document.getElementById('nom-cost').textContent="you'd pay "+f(n)+'/year with our couriers';document.getElementById('nom-note').textContent=c>n?"That's "+f(c-n)+'/year less than you pay now.':c===n?'Same as you pay now, minus the marked-up menu.':'Our 20% courier rate is higher than your plan.'}
 
 function openM(loc){posthog.capture('restaurant_apply_opened',{cta_location:loc||'unknown'});document.getElementById('mo').classList.add('open');document.body.style.overflow='hidden'}
 function closeM(){document.getElementById('mo').classList.remove('open');document.body.style.overflow=''}
