@@ -201,6 +201,10 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 .mo-x{position:absolute;top:12px;right:16px;font-size:24px;color:var(--gray);cursor:pointer;background:none;border:none;line-height:1}
 .mo-ok{display:none}
 .mo-ok.show{display:block}
+.mo-ask{font-family:Geom,sans-serif;font-weight:700;font-size:18px;line-height:24px;margin:-8px 0 12px}
+.mo-fine{font-size:11px;line-height:15px;color:var(--body1);margin-top:12px}
+.mo-fine a{text-decoration:underline}
+.mo-skip{margin-top:12px;font-size:14px;line-height:20px;color:var(--gray);text-decoration:underline}
 .mo-form.hide{display:none}
 .mo-err{color:var(--red);font-size:13px;margin-bottom:8px;min-height:0}
 
@@ -382,12 +386,20 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
       <p class="mo-sub">We&rsquo;ll let you know when we launch, won&rsquo;t be long from now!</p>
       <div class="mo-err" id="merr"></div>
       <input type="email" class="mo-in" id="me" placeholder="Email address" required>
-      <input type="tel" class="mo-in" id="mp" placeholder="Phone number (optional)">
       <button class="mo-go" id="mbtn" onclick="sub()">Join the waitlist</button>
     </div>
     <div class="mo-ok" id="mok">
       <h3>You&rsquo;re in &#x1F389;</h3>
       <p class="mo-sub">We&rsquo;ll let you know the moment nomnomnom launches near you. Get ready to save real money on real food.</p>
+      <div id="mph">
+        <p class="mo-ask">Want a text the day we launch?</p>
+        <div class="mo-err" id="mperr"></div>
+        <input type="tel" class="mo-in" id="mp" placeholder="Phone number" autocomplete="tel">
+        <button class="mo-go" id="mpbtn" onclick="subPhone()">Text me on launch day</button>
+        <p class="mo-fine">By tapping &ldquo;Text me on launch day&rdquo;, you agree to get a one-time launch text from nomnomnom. Message and data rates may apply. Reply STOP to opt out or HELP for help. See our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms</a>.</p>
+        <button class="mo-skip" onclick="skipPhone()">No thanks</button>
+      </div>
+      <p class="mo-sub" id="mph-ok" hidden>Got it. We&rsquo;ll text you the day we launch.</p>
     </div>
   </div>
 </div>
@@ -445,9 +457,39 @@ requestAnimationFrame(()=>{requestAnimationFrame(()=>{
 // === Supabase Waitlist ===
 const API_URL='https://api-production-0f8d.up.railway.app/api/v1';
 
+let signupId=null;
+async function subPhone(){
+  const phone=document.getElementById('mp').value.trim();
+  const err=document.getElementById('mperr');
+  const btn=document.getElementById('mpbtn');
+  if(phone.replace(/\D/g,'').length<10){
+    err.textContent='Please enter a valid phone number.';
+    document.getElementById('mp').style.borderColor='var(--red)';return;
+  }
+  err.textContent='';btn.disabled=true;btn.textContent='Saving...';
+  try{
+    const res=await fetch(API_URL+'/waitlist/'+signupId+'/phone',{
+      method:'PATCH',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({phone})
+    });
+    if(res.ok){
+      posthog.capture('waitlist_phone_added');
+      document.getElementById('mph').hidden=true;
+      document.getElementById('mph-ok').hidden=false;
+    }else{
+      err.textContent=res.status===400?'Please enter a valid phone number.':'Something went wrong. Try again?';
+      btn.disabled=false;btn.textContent='Text me on launch day';
+    }
+  }catch(e){
+    err.textContent='Network error. Try again.';
+    btn.disabled=false;btn.textContent='Text me on launch day';
+  }
+}
+function skipPhone(){posthog.capture('waitlist_phone_skipped');closeM()}
+
 async function sub(){
   const email=document.getElementById('me').value.trim();
-  const phone=document.getElementById('mp').value.trim();
   const err=document.getElementById('merr');
   const btn=document.getElementById('mbtn');
 
@@ -461,10 +503,12 @@ async function sub(){
     const res=await fetch(API_URL+'/waitlist',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({email,phone:phone||null,source:'landing_page'})
+      body:JSON.stringify({email,source:'landing_page'})
     });
     if(res.ok||res.status===201){
-      posthog.capture('waitlist_signup_completed',{has_phone:!!phone});
+      const d=await res.json().catch(()=>({}));signupId=d.id||null;
+      if(!signupId)document.getElementById('mph').hidden=true;
+      posthog.capture('waitlist_signup_completed');
       posthog.identify(email);
       posthog.people.set({email:email});
       document.getElementById('mf').classList.add('hide');
@@ -511,7 +555,7 @@ async function subRS(){
 
 // === Waitlist form started (fires once on first field focus) ===
 let wlStarted=false;
-['me','mp'].forEach(function(id){
+['me'].forEach(function(id){
   var el=document.getElementById(id);
   if(el)el.addEventListener('focus',function(){if(!wlStarted){wlStarted=true;posthog.capture('waitlist_signup_started')}});
 });
