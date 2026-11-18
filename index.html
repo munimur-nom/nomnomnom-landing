@@ -383,7 +383,6 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
       <div class="mo-err" id="merr"></div>
       <input type="email" class="mo-in" id="me" placeholder="Email address" required>
       <input type="tel" class="mo-in" id="mp" placeholder="Phone number (optional)">
-      <input type="text" class="mo-in" id="mst" placeholder="State (e.g. California)">
       <button class="mo-go" id="mbtn" onclick="sub()">Join the waitlist</button>
     </div>
     <div class="mo-ok" id="mok">
@@ -449,7 +448,6 @@ const API_URL='https://api-production-0f8d.up.railway.app/api/v1';
 async function sub(){
   const email=document.getElementById('me').value.trim();
   const phone=document.getElementById('mp').value.trim();
-  const state=document.getElementById('mst').value.trim();
   const err=document.getElementById('merr');
   const btn=document.getElementById('mbtn');
 
@@ -463,12 +461,12 @@ async function sub(){
     const res=await fetch(API_URL+'/waitlist',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({email,phone:phone||null,state:state||null,source:'landing_page'})
+      body:JSON.stringify({email,phone:phone||null,source:'landing_page'})
     });
     if(res.ok||res.status===201){
-      posthog.capture('waitlist_signup_completed',{state:state||null,has_phone:!!phone});
+      posthog.capture('waitlist_signup_completed',{has_phone:!!phone});
       posthog.identify(email);
-      posthog.people.set({email:email,state:state||null});
+      posthog.people.set({email:email});
       document.getElementById('mf').classList.add('hide');
       document.getElementById('mok').classList.add('show');
     }else if(res.status===409){
@@ -513,7 +511,7 @@ async function subRS(){
 
 // === Waitlist form started (fires once on first field focus) ===
 let wlStarted=false;
-['me','mp','mst'].forEach(function(id){
+['me','mp'].forEach(function(id){
   var el=document.getElementById(id);
   if(el)el.addEventListener('focus',function(){if(!wlStarted){wlStarted=true;posthog.capture('waitlist_signup_started')}});
 });
